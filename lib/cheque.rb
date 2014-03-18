@@ -10,5 +10,7 @@ class Cheque
     @monto = monto
     @fecha_emision = fecha_emision
   end
+  
+  
 
 end
