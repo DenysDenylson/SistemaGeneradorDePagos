@@ -1,6 +1,7 @@
 require ('date')
 
 class Cheque
+  
   attr_accessor :monto
   attr_reader :beneficiario, :ci, :fecha_emision
 

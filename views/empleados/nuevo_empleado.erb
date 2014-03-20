@@ -1,0 +1,27 @@
+<h1>Registrar empleado</h1>
+<form action="/empleados" method="post">
+  
+  <label for="ci">Ci:</label><br />
+  <input name="ci" type="text" value="<%= @empleado.ci %>" />
+  <br />
+
+  <label for="empleado_nombre">Nombre:</label><br />
+  <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
+  <br />
+
+  <label for="apellido">Apellido:</label><br />
+  <input name="apellido" type="text" value="<%= @empleado.apellido %>" />
+  <br />
+  
+  <label for="tipo_contrato">Tipo de Contrato:</label><br />
+  <select name="tipo_contrato" >
+   <option value = "Quincenal">Quincenal</option>
+   <option value = "Mensual">Mensual</option>
+  </select>
+  <br />
+  <label for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label><br />
+  <input name="fecha_inicio_contrato" type="date" value="<%= @empleado.fecha_inicio_contrato %>" />
+  <br />
+
+  <input type="submit" value="Crear Empleado" />
+</form>  

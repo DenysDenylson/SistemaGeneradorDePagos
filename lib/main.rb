@@ -7,7 +7,7 @@ require ('date')
 require File.expand_path(File.dirname(__FILE__) + '/consola')
 
 consola = Consola.new
-generador = GeneradorCheque.new(Date.today)
+generador = GeneradorCheque.new(Date.new(2014,3,31))
 empleado = Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,1,1), ContratoMensual.new)
 empleado.clasificador_salario = ClasificadorSalarioFijo.new(300, Date.new(2012,1,1))
 empleado.asignar_salario_fijo(1000)
