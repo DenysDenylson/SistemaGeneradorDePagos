@@ -3,7 +3,6 @@ require 'date'
 
 class Persistencia 
   include Singleton
-  attr_accessor :empleados
   
   def initialize
     @empleados = Array.new

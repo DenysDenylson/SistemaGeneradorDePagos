@@ -7,7 +7,7 @@ get '/' do
   erb :"empleados/lista_empleados"
 end
 
-get '/nuevo' do
+get '/empleados/nuevo_empleado' do
 	@empleado = Empleado.new('', '', '', Date.today, ContratoMensual.new)
 erb :"empleados/nuevo_empleado"
 end
