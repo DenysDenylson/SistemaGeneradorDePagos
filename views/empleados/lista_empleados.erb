@@ -9,18 +9,24 @@
 	            <th>Nombre</th>
 	            <th>Apellido</th>
 	            <th>Fecha de Contrato</th>
+	            <th>Tipo de Contrato</th>
+		        <th></th>
+			    <th></th>
+		
 	     	</tr>
 		</thead>
 		<tbody>
 			<% numeroEmpleado = 0 %>
 			<% @empleados.each do |empleado| %>
 	        	<tr>
-	            	<td><%= numeroEmpleado = numeroEmpleado + 1 %></td>
+	            	<td><%= numeroEmpleado += 1 %></td>
 	            	<td><%= empleado.ci %></td>
 	            	<td><%= empleado.nombre %></td>
 	            	<td><%= empleado.apellido %></td>
-	            	<td><%= empleado.nombre %></td>
-	            	<td><%= empleado.nombre %></td>
+	            	<td><%= empleado.fecha_inicio_contrato %></td>
+	            	<td><%= empleado.clasificador_contrato.class.name %></td>
+	            	<td><a href = "/modificar_empleado/<%= empleado.ci %>"> Modificar </a></td>
+	            	<td><a href = "/eliminar_empleado/<%= empleado.ci %>"> Eliminar </a></td>
 				</tr>
 			<% end %>
  		</tbody>

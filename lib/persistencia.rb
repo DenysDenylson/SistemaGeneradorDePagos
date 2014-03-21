@@ -14,8 +14,23 @@ class Persistencia
     @empleados.push(empleado)
   end
 
-  def recuperarEmpleados 
-    @empleados
+  def recuperarEmpleadosPorCI(ci) 
+    empleado = @empleados.each{|x| x.ci == ci }
+  end
+  
+  def actualizarEmpleados(empleado)
+    @empleados.each{|x| if x.ci == empleado.ci 
+                            x = empleado
+                        end
+                   }
+  end
+  
+  def eliminarEmpleadoPorCI(ci)
+    @empleados.delete_if{|x| x.ci == ci}
+  end
+  
+  private
+  def actualizarEmpleadoPorCI
   end
   
 end

@@ -1,26 +1,53 @@
 require './gemas'
 require 'sinatra'
-require 'json'
 
 get '/' do
   @empleados = Persistencia.instance.recuperarEmpleados
   erb :"empleados/lista_empleados"
 end
 
-get '/empleados/nuevo_empleado' do
+get '/nuevo_empleado' do
 	@empleado = Empleado.new('', '', '', Date.today, ContratoMensual.new)
-erb :"empleados/nuevo_empleado"
+  erb :"empleados/nuevo_empleado"
 end
 
-post '/empleados' do
-#  empleado = params[:empleado]
-  ci = 12312
-  nombre = params[:nombre]
-  apellido = 'empleado.apellido'
-
-  Persistencia.instance.cargarEmpleado(Empleado.new(ci.to_s, nombre.to_s, apellido.to_s, Date.new(2012,1,1), ContratoMensual.new))
+get "/modificar_empleado/:id" do
   
-  @empleados = Persistencia.instance.recuperarEmpleados
+  erb :"empleados/nuevo_empleado"
+end
+
+put "/modificar_empleado" do
   
   erb :"empleados/lista_empleados"
 end
+
+get "/eliminar_empleado/:ci" do
+  Persistencia.instance.eliminarEmpleadoPorCI(params[:ci])
+  @empleados = Persistencia.instance.recuperarEmpleados
+  erb :"empleados/lista_empleados"
+end
+
+post '/empleados' do
+  ci = params[:ci]
+  nombre = params[:nombre]
+  apellido = params[:apellido]
+  fecha_inicio_contrato = params[:fecha_inicio_contrato]
+  
+  if params[:tipo_contrato] == "true"
+    tipo_contrato = ContratoQuincenal.new
+  else
+    tipo_contrato = ContratoMensual.new
+  end
+  
+  Persistencia.instance.cargarEmpleado(Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato))
+  @empleados = Persistencia.instance.recuperarEmpleados
+  erb :"empleados/lista_empleados"
+end
+
+
+
+
+
+
+
+
