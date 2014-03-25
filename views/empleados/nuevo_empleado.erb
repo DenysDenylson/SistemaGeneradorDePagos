@@ -3,15 +3,12 @@
   <label for="ci">Ci:</label>
   <input name="ci" type="number" value="" />
   <br>
-
   <label for="nombre">Nombre:</label>
   <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
   <br>
-
   <label for="apellido">Apellido:</label>
   <input name="apellido" type="text" value="<%= @empleado.apellido %>" />
   <br>
-  
   <label for="tipo_contrato" value="Tipo de Contrato">Tipo de Contrato:</label>
   <select name="tipo_contrato" >
    <option value = "quincenal" <%= @empleado.queTipoDeContratoEstaSeleccionado(ContratoQuincenal.new)%> >Quincenal</option>
@@ -19,15 +16,13 @@
   </select>
   <br>
   <label for="tipo_salario">Tipo de Salario:</label>
-  <select name="tipo_salario" >
+  <select id="salario" onchange="cambiar()" name="tipo_salario" >
    <option value = "por_hora" <%= @empleado.queTipoDeSalarioEstaSeleccionado(ClasificadorPorHora.new(0))%> >Por Hora</option>
    <option value = "fijo" <%= @empleado.queTipoDeSalarioEstaSeleccionado(ClasificadorSalarioFijo.new(0,Date.today))%> >Fijo</option>
   </select>
   <br>
-  <label for="salario">Sueldo:</label>
+  <label id="salario_monto">Salario</label>
   <input name="salario" type="number" value = "0" /> 
-
-
   <br>
   <label for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
   <input name="fecha_inicio_contrato" type="date" value="<%= @empleado.fecha_inicio_contrato %>" />
@@ -35,3 +30,11 @@
   <br>
   <input type="submit" value="Crear Empleado" />
 </form>  
+
+<script type="text/javascript">
+		function cambiar(){
+			var salario=document.getElementById("salario").value;
+			document.getElementById("salario_monto").innerHTML="Salario "+salario;
+		}
+
+</script>

@@ -33,7 +33,10 @@ post '/empleados' do
   erb :"empleados/lista_empleados"
 end
 
-
+get "/ver_empleado/:ci" do
+  @empleado = Persistencia.instance.recuperarEmpleadoPorCI(params[:ci])
+  erb :"empleados/ver_empleado"
+end
 
 get "/modificar_empleado/:ci" do
   @empleado = Persistencia.instance.recuperarEmpleadoPorCI(params[:ci])

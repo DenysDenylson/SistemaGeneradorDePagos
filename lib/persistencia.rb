@@ -6,7 +6,6 @@ class Persistencia
   
   def initialize
     @empleados = Array.new
-    
   end
   
   def cargarEmpleado(empleado)
@@ -33,10 +32,6 @@ class Persistencia
   
   def eliminarEmpleadoPorCI(ci)
     @empleados.delete_if{|x| x.ci == ci}
-  end
-  
-  private
-  def actualizarEmpleadoPorCI
   end
   
 end
