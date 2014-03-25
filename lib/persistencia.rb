@@ -13,8 +13,12 @@ class Persistencia
   def cargarEmpleado(empleado)
     @empleados.push(empleado)
   end
+  
+  def recuperarEmpleados
+    @empleados
+  end
 
-  def recuperarEmpleadosPorCI(ci) 
+  def recuperarEmpleadoPorCI(ci) 
     empleado = @empleados.each{|x| x.ci == ci }
   end
   
