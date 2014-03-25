@@ -3,7 +3,7 @@ require('date')
 #ManejadorEmpleado#
 class Empleado
   
-  attr_accessor :nombre, :apellido, :ci, :clasificador_contrato, :fecha_inicio_contrato
+  attr_accessor :nombre, :apellido, :ci, :clasificador_salario, :clasificador_contrato, :fecha_inicio_contrato
 
   def initialize(ci, nombre, apellido, fecha_inicio_contrato,clasificador_contrato)
     @ci = ci
