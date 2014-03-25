@@ -36,7 +36,6 @@ class Empleado
     @clasificador_salario.calcular_salario(fecha_ejecucion) - @descuento_fijo_por_sindicato - calcular_monto_por_servicios_sindicato
   end
 
-
   def asignar_descuento_sindicato(monto)
     @descuento_fijo_por_sindicato = monto
   end
@@ -57,9 +56,67 @@ class Empleado
     @clasificador_salario.monto_por_hora = monto
   end
   
-  
   def registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
     @clasificador_salario.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
   end
 
+
+##pruebas para la UI
+
+
+## asignar_tipo_salario ("tipo_salario", monto)
+## case tipo_salario
+## when "fijo"
+## => clasificador_salario = ClasificadorSalarioFijo.new (monto, @fecha_inicio)
+## when "por hora"
+## => clasificador_salario = ClasificadorPorHora.new (monto)
+## when "otro"
+## => algo
+
+  def asignar_tipo_salario(tipo_salario,monto)
+    case tipo_salario
+    when "fijo"
+      @clasificador_salario = ClasificadorSalarioFijo.new(monto, @fecha_inicio_contrato)
+    when "por_hora"
+       @clasificador_salario = ClasificadorPorHora.new(monto)
+    end
+  end
+  
+  def devolver_salario
+    @clasificador_salario.devolver_salario
+  end
+
+
+
+
+  def queTipoDeContratoEstaSeleccionado(tipoContrato)
+    if @clasificador_contrato.class == tipoContrato.class
+      "selected"
+    else
+      ""
+    end
+  end
+  
+  def queTipoDeSalarioEstaSeleccionado(tipoSalario)
+    if @clasificador_salario.class == tipoSalario.class
+      "selected"
+    else
+      ""
+    end
+  end
+  
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

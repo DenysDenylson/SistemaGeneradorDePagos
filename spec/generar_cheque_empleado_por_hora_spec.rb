@@ -9,7 +9,6 @@ describe "Generar cheque para empleado por hora" do
   subject(:empleado) { Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,1,1),ContratoQuincenal.new) }
   before (@each) {
     empleado.clasificador_salario = ClasificadorPorHora.new(50)
-    empleado.asignar_pago_por_hora(50)
   }
 
 	it "deberia generar cheque para un empleado con solo una tarjeta de tiempo" do

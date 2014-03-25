@@ -6,7 +6,6 @@ class Persistencia
   
   def initialize
     @empleados = Array.new
-    @empleados.push(Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,1,1),ContratoMensual.new))
     
   end
   
@@ -19,14 +18,17 @@ class Persistencia
   end
 
   def recuperarEmpleadoPorCI(ci) 
-    empleado = @empleados.each{|x| x.ci == ci }
+    empleado = @empleados.select{|x| x.ci == ci }
+    empleado.first
   end
   
   def actualizarEmpleados(empleado)
-    @empleados.each{|x| if x.ci == empleado.ci 
-                            x = empleado
-                        end
-                   }
+    @empleados = @empleados.collect{|x| if x.ci == empleado.ci 
+                                          x = empleado
+                                        else 
+                                          x
+                                        end
+                                   }
   end
   
   def eliminarEmpleadoPorCI(ci)

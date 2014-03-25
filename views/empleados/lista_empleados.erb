@@ -10,7 +10,11 @@
 	            <th>Apellido</th>
 	            <th>Fecha de Contrato</th>
 	            <th>Tipo de Contrato</th>
+	            <th>Tipo de Salario</th>
+				<th>Salario</th>
+	
 		        <th></th>
+		        <th>Opciones</th>
 			    <th></th>
 		
 	     	</tr>
@@ -25,6 +29,9 @@
 	            	<td><%= empleado.apellido %></td>
 	            	<td><%= empleado.fecha_inicio_contrato %></td>
 	            	<td><%= empleado.clasificador_contrato.class.name %></td>
+					<td><%= empleado.clasificador_salario.class.name %></td>
+					<td><%= empleado.devolver_salario %></td>
+					<td><a href = "/modificar_empleado/<%= empleado.ci %>"> Ver </a></td>
 	            	<td><a href = "/modificar_empleado/<%= empleado.ci %>"> Modificar </a></td>
 	            	<td><a href = "/eliminar_empleado/<%= empleado.ci %>"> Eliminar </a></td>
 				</tr>

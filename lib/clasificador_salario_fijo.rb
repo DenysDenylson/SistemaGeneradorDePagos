@@ -12,6 +12,15 @@ class ClasificadorSalarioFijo
     end
     @salario
   end
+  
+  
+  #### metodos sin test
+  
+  def devolver_salario
+    @salario
+  end
+
+  ####
 
   private
   def calcular_salario_prorrateado(fecha_ejecucion)
@@ -32,6 +41,9 @@ class ClasificadorSalarioFijo
   def ha_sido_contratado_este_mes?(fecha_ejecucion)
     @fecha_inicio_contrato.month==fecha_ejecucion.month && @fecha_inicio_contrato.year==fecha_ejecucion.year
   end
+  
+  
+  
 
 
 end

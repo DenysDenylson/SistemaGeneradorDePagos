@@ -1,27 +1,37 @@
 <h1>Registrar empleado</h1>
 <form action="/empleados" method="post">
-  
-  <label for="ci">Ci:</label><br />
-  <input name="ci" type="text" value="<%= @empleado.ci %>" />
-  <br />
+  <label for="ci">Ci:</label>
+  <input name="ci" type="number" value="" />
+  <br>
 
-  <label for="empleado_nombre">Nombre:</label><br />
+  <label for="nombre">Nombre:</label>
   <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
-  <br />
+  <br>
 
-  <label for="apellido">Apellido:</label><br />
+  <label for="apellido">Apellido:</label>
   <input name="apellido" type="text" value="<%= @empleado.apellido %>" />
-  <br />
+  <br>
   
-  <label for="tipo_contrato">Tipo de Contrato:</label><br />
+  <label for="tipo_contrato" value="Tipo de Contrato">Tipo de Contrato:</label>
   <select name="tipo_contrato" >
-   <option value = "true">Quincenal</option>
-   <option value = "false">Mensual</option>
+   <option value = "quincenal" <%= @empleado.queTipoDeContratoEstaSeleccionado(ContratoQuincenal.new)%> >Quincenal</option>
+   <option value = "mensual" <%= @empleado.queTipoDeContratoEstaSeleccionado(ContratoMensual.new)%> >Mensual</option>
   </select>
-  <br />
-  <label for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label><br />
-  <input name="fecha_inicio_contrato" type="date" value="<%= @empleado.fecha_inicio_contrato %>" />
-  <br />
+  <br>
+  <label for="tipo_salario">Tipo de Salario:</label>
+  <select name="tipo_salario" >
+   <option value = "por_hora" <%= @empleado.queTipoDeSalarioEstaSeleccionado(ClasificadorPorHora.new(0))%> >Por Hora</option>
+   <option value = "fijo" <%= @empleado.queTipoDeSalarioEstaSeleccionado(ClasificadorSalarioFijo.new(0,Date.today))%> >Fijo</option>
+  </select>
+  <br>
+  <label for="salario">Sueldo:</label>
+  <input name="salario" type="number" value = "0" /> 
 
+
+  <br>
+  <label for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
+  <input name="fecha_inicio_contrato" type="date" value="<%= @empleado.fecha_inicio_contrato %>" />
+  <br>
+  <br>
   <input type="submit" value="Crear Empleado" />
 </form>  
