@@ -1,7 +1,7 @@
 <h1>Registrar empleado</h1>
-<form action="/empleados" method="post">
+<form action="/empleados" method="post" name="nuevo" onsubmit="return formulario()">
   <label for="ci">Ci:</label>
-  <input name="ci" type="number" value="" />
+  <input name="ci" type="number" value=""/>
   <br>
   <label for="nombre">Nombre:</label>
   <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
@@ -29,12 +29,20 @@
   <br>
   <br>
   <input type="submit" value="Crear Empleado" />
-</form>  
+</form> 
 
 <script type="text/javascript">
 		function cambiar(){
 			var salario=document.getElementById("salario").value;
 			document.getElementById("salario_monto").innerHTML="Salario "+salario;
 		}
+   function formulario() { 
+    if (nuevo.ci.value   == "") 
+      { alert ('El ci esta vacío');
+        nuevo.ci.focus();  
+     return false; 
+   }
+   } 
+</script>
 
 </script>
