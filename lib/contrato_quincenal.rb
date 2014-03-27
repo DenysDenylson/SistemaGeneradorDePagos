@@ -5,4 +5,12 @@ class ContratoQuincenal
     fecha_de_ejecucion.strftime("%A") == "Friday"
   end
   
+  def esContratoMensual?
+    false
+  end
+  
+  def esContratoQuincenal?
+    true
+  end
+  
 end

@@ -16,8 +16,16 @@ class ClasificadorPorHora
     @tarjetas_de_tiempo.push(tarjeta_de_tiempo)
   end
   
-  
 ### metodos sin tests
+
+  def esSalarioFijo?
+    false
+  end
+
+  def esSalarioPorHora?
+    true
+  end
+
   def devolver_salario
     @monto_por_hora
   end

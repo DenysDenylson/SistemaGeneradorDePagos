@@ -12,14 +12,14 @@
   <br>
   <label for="tipo_contrato">Tipo de Contrato:</label>
   <select name="tipo_contrato" >
-   <option value = "quincenal" <%= @empleado.queTipoDeContratoEstaSeleccionado(ContratoQuincenal.new)%> >Quincenal</option>
-   <option value = "mensual" <%= @empleado.queTipoDeContratoEstaSeleccionado(ContratoMensual.new)%> >Mensual</option>
+   <option value = "quincenal" <%= 'selected' if @empleado.esContratoQuincenal? %> >Quincenal</option>
+   <option value = "mensual" <%= 'selected' if @empleado.esContratoMensual? %> >Mensual</option>
   </select>
   <br>
   <label for="tipo_salario">Tipo de Salario:</label>
   <select id="salario" onchange="cambiar()" name="tipo_salario" >
-   <option value = "por_hora" <%= @empleado.queTipoDeSalarioEstaSeleccionado(ClasificadorPorHora.new(0))%> >Por Hora</option>
-   <option value = "fijo" <%= @empleado.queTipoDeSalarioEstaSeleccionado(ClasificadorSalarioFijo.new(0,Date.today))%> >Fijo</option>
+   <option value = "por_hora" <%= 'selected' if @empleado.esSalarioPorHora? %> >Por Hora</option>
+   <option value = "fijo" <%= 'selected' if @empleado.esSalarioFijo? %> >Fijo</option>
   </select>
   <br>
   <label id="salario_monto">Salario</label>

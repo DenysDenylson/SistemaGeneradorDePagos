@@ -13,8 +13,15 @@ class ClasificadorSalarioFijo
     @salario
   end
   
-  
   #### metodos sin test
+  
+  def esSalarioFijo?
+    true
+  end
+  
+  def esSalarioPorHora?
+    false
+  end
   
   def devolver_salario
     @salario

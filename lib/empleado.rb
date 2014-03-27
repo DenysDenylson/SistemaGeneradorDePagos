@@ -86,23 +86,20 @@ class Empleado
     @clasificador_salario.devolver_salario
   end
 
-
-
-
-  def queTipoDeContratoEstaSeleccionado(tipoContrato)
-    if @clasificador_contrato.class == tipoContrato.class
-      "selected"
-    else
-      ""
-    end
+  def esContratoMensual?
+    @clasificador_contrato.esContratoMensual?
   end
   
-  def queTipoDeSalarioEstaSeleccionado(tipoSalario)
-    if @clasificador_salario.class == tipoSalario.class
-      "selected"
-    else
-      ""
-    end
+  def esContratoQuincenal?
+    @clasificador_contrato.esContratoQuincenal?
+  end
+  
+  def esSalarioFijo?
+    @clasificador_salario.esSalarioFijo?
+  end
+  
+  def esSalarioPorHora?
+    @clasificador_salario.esSalarioPorHora?
   end
   
 end

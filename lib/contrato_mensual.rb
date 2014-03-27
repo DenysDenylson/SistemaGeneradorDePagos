@@ -6,4 +6,12 @@ class ContratoMensual
     return (fecha_de_ejecucion.next_day.day==1)
   end
   
+  def esContratoMensual?
+    true
+  end
+  
+  def esContratoQuincenal?
+    false
+  end
+  
 end
