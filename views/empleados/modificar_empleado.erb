@@ -1,8 +1,8 @@
 <h1>Modificar empleado</h1>
-<form action="/empleados/<%= @empleado.ci %>" method="post">
+<form action="/empleados/<%= @empleado.ci %>" method="post" name="modificado" onsubmit="return formulario()">
   <input type="hidden" name="_method" value="put" /> 
   <label for="ci">Ci:</label>
-  <input name="ci" type="number" value="<%= @empleado.ci %>" />
+  <input name="ci" id="ci" type="number" value="<%= @empleado.ci %>" />
   <br>
   <label for="nombre">Nombre:</label>
   <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
@@ -34,9 +34,18 @@
 
 
 <script type="text/javascript">
-		function cambiar(){
-			var salario=document.getElementById("salario").value;
-			document.getElementById("salario_monto").innerHTML="Salario "+salario;
-		}
-
+	function cambiar(){
+		var salario=document.getElementById("salario").value;
+		document.getElementById("salario_monto").innerHTML="Salario "+salario;
+	}
+	function formulario() { 
+		var inputVal =  modificado.ci.value
+    	if (inputVal   == "") 
+      	{
+        	$("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
+        	$("#ci").attr({"placeholder":"obligatorio"});
+        	modificado.ci.focus();  
+     		return false; 
+   		}
+	}
 </script>

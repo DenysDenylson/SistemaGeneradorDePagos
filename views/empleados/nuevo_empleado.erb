@@ -32,20 +32,21 @@
 </form> 
 
 <script type="text/javascript">
-		function cambiar(){
-			var salario=document.getElementById("salario").value;
-			document.getElementById("salario_monto").innerHTML="Salario "+salario;
-		}
-   function formulario() { 
-     var inputVal = nuevo.ci.value
-    if (inputVal   == "") 
-      {
-        $("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
-        $("#ci").attr({"placeholder":"obligatorio"});
-        nuevo.ci.focus();  
-     return false; 
-   }
-   } 
+	function cambiar(){
+		var salario=document.getElementById("salario").value;
+		document.getElementById("salario_monto").innerHTML="Salario "+salario;
+	}
+	
+	function formulario() { 
+		var inputVal = nuevo.ci.value
+    	if (inputVal   == "") 
+      	{
+        	$("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
+        	$("#ci").attr({"placeholder":"obligatorio"});
+        	nuevo.ci.focus();  
+     		return false; 
+   		}
+	} 
 </script>
 
 </script>
