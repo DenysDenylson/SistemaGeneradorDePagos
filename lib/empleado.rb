@@ -63,16 +63,6 @@ class Empleado
 
 ##pruebas para la UI
 
-
-## asignar_tipo_salario ("tipo_salario", monto)
-## case tipo_salario
-## when "fijo"
-## => clasificador_salario = ClasificadorSalarioFijo.new (monto, @fecha_inicio)
-## when "por hora"
-## => clasificador_salario = ClasificadorPorHora.new (monto)
-## when "otro"
-## => algo
-
   def asignar_tipo_salario(tipo_salario,monto)
     case tipo_salario
     when "fijo"
@@ -81,6 +71,8 @@ class Empleado
        @clasificador_salario = ClasificadorPorHora.new(monto)
     end
   end
+  
+  
   
   def devolver_salario
     @clasificador_salario.devolver_salario

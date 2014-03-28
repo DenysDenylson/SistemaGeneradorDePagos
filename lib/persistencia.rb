@@ -8,7 +8,7 @@ class Persistencia
     @empleados = Array.new
   end
   
-  def cargarEmpleado(empleado)
+  def guardarEmpleado(empleado)
     @empleados.push(empleado)
   end
   
@@ -24,8 +24,6 @@ class Persistencia
   def actualizarEmpleados(empleado)
     @empleados = @empleados.collect{|x| if x.ci == empleado.ci 
                                           x = empleado
-                                        else 
-                                          x
                                         end
                                    }
   end
@@ -33,5 +31,12 @@ class Persistencia
   def eliminarEmpleadoPorCI(ci)
     @empleados.delete_if{|x| x.ci == ci}
   end
+  
+  def instanciarNuevoEmpleado
+  	@empleado = Empleado.new('', '', '', Date.today, ContratoMensual.new)
+  	@empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
+  	@empleado
+	end
+  
   
 end

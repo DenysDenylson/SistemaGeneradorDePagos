@@ -7,8 +7,7 @@ get '/' do
 end
 
 get '/nuevo_empleado' do
-	@empleado = Empleado.new('', '', '', Date.today, ContratoMensual.new)
-	@empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
+  @empleado = Persistencia.instance.instanciarNuevoEmpleado
   erb :"empleados/nuevo_empleado"
 end
 
@@ -28,7 +27,7 @@ post '/empleados' do
   empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato)
   empleado.asignar_tipo_salario(params[:tipo_salario], params[:salario])
   
-  Persistencia.instance.cargarEmpleado(empleado)
+  Persistencia.instance.guardarEmpleado(empleado)
   @empleados = Persistencia.instance.recuperarEmpleados
   erb :"empleados/lista_empleados"
 end
