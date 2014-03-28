@@ -1,10 +1,10 @@
 <h1>Registrar empleado</h1>
 <form action="/empleados" method="post" name="nuevo" onsubmit="return formulario()">
   <label for="ci">Ci:</label>
-  <input name="ci" type="number" value=""/>
+  <input name="ci" id="ci" type="number" value=""/>
   <br>
   <label for="nombre">Nombre:</label>
-  <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
+  <input name="nombre" id="nombre" type="text" value="<%= @empleado.nombre %>" />
   <br>
   <label for="apellido">Apellido:</label>
   <input name="apellido" type="text" value="<%= @empleado.apellido %>" />
@@ -37,8 +37,10 @@
 			document.getElementById("salario_monto").innerHTML="Salario "+salario;
 		}
    function formulario() { 
-    if (nuevo.ci.value   == "") 
-      { alert ('El ci esta vacío');
+     var inputVal = nuevo.ci.value
+    if (inputVal   == "") 
+      {
+        $("#ci").css({"background-color":"red"});
         nuevo.ci.focus();  
      return false; 
    }
