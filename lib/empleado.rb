@@ -60,20 +60,15 @@ class Empleado
     @clasificador_salario.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
   end
 
-
 ##pruebas para la UI
 
-  def asignar_tipo_salario(tipo_salario,monto)
-    case tipo_salario
-    when "fijo"
-      @clasificador_salario = ClasificadorSalarioFijo.new(monto, @fecha_inicio_contrato)
-    when "por_hora"
-       @clasificador_salario = ClasificadorPorHora.new(monto)
-    end
+  def self.crearEmpleado(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato, tipo_salario, salario)
+    clasificador_contrato = crear_tipo_contrato(tipo_contrato)
+    empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, clasificador_contrato)
+    empleado.crear_tipo_salario(tipo_salario, salario)
+    empleado
   end
-  
-  
-  
+
   def devolver_salario
     @clasificador_salario.devolver_salario
   end
@@ -93,6 +88,26 @@ class Empleado
   def esSalarioPorHora?
     @clasificador_salario.esSalarioPorHora?
   end
+  
+  def self.crear_tipo_contrato(tipo_contrato)
+    case tipo_contrato
+    when "quincenal"
+      clasificador_contrato = ContratoQuincenal.new
+    when "mensual"
+      clasificador_contrato = ContratoMensual.new
+    end
+    clasificador_contrato
+  end
+
+  def crear_tipo_salario(tipo_salario,salario)
+    case tipo_salario
+    when "fijo"
+      @clasificador_salario = ClasificadorSalarioFijo.new(salario, @fecha_inicio_contrato)
+    when "por_hora"
+      @clasificador_salario = ClasificadorPorHora.new(salario)
+    end
+  end
+  
   
 end
 

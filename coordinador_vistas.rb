@@ -12,21 +12,9 @@ get '/nuevo_empleado' do
 end
 
 post '/empleados' do
-  ci = params[:ci]
-  nombre = params[:nombre]
-  apellido = params[:apellido]
-  fecha_inicio_contrato = params[:fecha_inicio_contrato]
-  
-  case params[:tipo_contrato]
-  when "quincenal"
-    tipo_contrato = ContratoQuincenal.new
-  when "mensual"
-    tipo_contrato = ContratoMensual.new
-  end
-  
-  empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato)
-  empleado.asignar_tipo_salario(params[:tipo_salario], params[:salario])
-  
+  empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
+                                    params[:fecha_inicio_contrato],params[:tipo_contrato],
+                                    params[:tipo_salario],params[:salario])
   Persistencia.instance.guardarEmpleado(empleado)
   @empleados = Persistencia.instance.recuperarEmpleados
   erb :"empleados/lista_empleados"
@@ -43,20 +31,9 @@ get "/modificar_empleado/:ci" do
 end
 
 put "/empleados/:ci" do
-  ci = params[:ci]
-  nombre = params[:nombre]
-  apellido = params[:apellido]
-  fecha_inicio_contrato = params[:fecha_inicio_contrato]
-  
-  case params[:tipo_contrato]
-  when "quincenal"
-    tipo_contrato = ContratoQuincenal.new
-  when "mensual"
-    tipo_contrato = ContratoMensual.new
-  end
-  
-  empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato)
-  empleado.asignar_tipo_salario(params[:tipo_salario], params[:salario])
+  empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
+                                    params[:fecha_inicio_contrato],params[:tipo_contrato],
+                                    params[:tipo_salario],params[:salario])
   
   Persistencia.instance.actualizarEmpleados(empleado)
   @empleados = Persistencia.instance.recuperarEmpleados
