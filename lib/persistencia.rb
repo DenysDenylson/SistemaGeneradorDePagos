@@ -22,7 +22,7 @@ class Persistencia
   end
   
   def actualizarEmpleados(empleado)
-    @empleados.collect{|x| if x.ci == empleado.ci 
+    @empleados.collect!{|x| if x.ci == empleado.ci 
                                           x = empleado
                                         end
                                    }
