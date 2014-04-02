@@ -22,10 +22,11 @@ class Persistencia
   end
   
   def actualizarEmpleados(empleado)
-    @empleados = @empleados.collect{|x| if x.ci == empleado.ci 
+    @empleados.collect{|x| if x.ci == empleado.ci 
                                           x = empleado
                                         end
                                    }
+                   @empleados
   end
   
   def eliminarEmpleadoPorCI(ci)

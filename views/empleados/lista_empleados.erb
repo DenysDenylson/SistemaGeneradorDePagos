@@ -31,9 +31,9 @@
 	            	<td><%= empleado.clasificador_contrato.class.name %></td>
 					<td><%= empleado.clasificador_salario.class.name %></td>
 					<td><%= empleado.devolver_salario %></td>
-					<td><a href = "/ver_empleado/<%= empleado.ci %>"> Ver </a></td>
-	            	<td><a href = "/modificar_empleado/<%= empleado.ci %>"> Modificar </a></td>
-	            	<td><a href = "/eliminar_empleado/<%= empleado.ci %>"> Eliminar </a></td>
+					<td><a href = "/ver_empleado/<%= empleado.ci %>"  class="btn btn-primary"> Ver </a></td>
+	            	<td><a href = "/modificar_empleado/<%= empleado.ci %>"  class="btn btn-primary"> Modificar</a></td>
+	            	<td><a href = "/eliminar_empleado/<%= empleado.ci %>" class="btn btn-danger"> Eliminar </a></td>
 				</tr>
 			<% end %>
  		</tbody>
