@@ -1,7 +1,7 @@
 require 'singleton'
 require 'date'
 
-class Persistencia 
+class RepositorioEmpleado 
   include Singleton
   
   def initialize
