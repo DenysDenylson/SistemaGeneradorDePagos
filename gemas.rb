@@ -6,5 +6,5 @@ require('./lib/clasificador_por_hora')
 require('./lib/clasificador_salario_fijo')
 require('./lib/contrato_mensual')
 require('./lib/contrato_quincenal')
-require('./lib/persistencia')
+require('./lib/repositorio_empleado')
 require 'date'

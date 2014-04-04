@@ -17,20 +17,19 @@ class RepositorioEmpleado
   end
 
   def recuperarEmpleadoPorCI(ci) 
-    empleado = @empleados.select{|x| x.ci == ci }
+    empleado = @empleados.select{|e| e.ci == ci }
     empleado.first
   end
   
   def actualizarEmpleados(empleado)
-    @empleados.collect!{|x| if x.ci == empleado.ci 
-                                          x = empleado
-                                        end
-                                   }
-                   @empleados
+    @empleados.collect!{|e| if e.ci == empleado.ci 
+                              e = empleado
+                            end
+                       }
   end
   
   def eliminarEmpleadoPorCI(ci)
-    @empleados.delete_if{|x| x.ci == ci}
+    @empleados.delete_if{|e| e.ci == ci}
   end
   
   def instanciarNuevoEmpleado
@@ -38,6 +37,5 @@ class RepositorioEmpleado
   	@empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
   	@empleado
 	end
-  
   
 end

@@ -1,74 +1,70 @@
 <h1>Modificar empleado</h1>
-<form class="form-horizontal" action="/empleados/<%= @empleado.ci %>" method="post" name="modificado" onsubmit="return formulario()">
-  <input type="hidden" name="_method" value="put" /> 
-  <div class="form-group">
-  <label class="col-md-4 control-label" for="ci">Ci:</label>
-  <div class="col-md-4">
-  <input name="ci" id="ci" type="number" value="<%= @empleado.ci %>" />
-  <br>
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="nombre">Nombre:</label>
-  <div class="col-md-4">
-  <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
-  <br>
-</div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="apellido">Apellido:</label>
-  <div class="col-md-4">
-  <input name="apellido" type="text" value="<%= @empleado.apellido %>" />
-  <br>
-</div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="tipo_contrato">Tipo de Contrato:</label>
-  <div class="col-md-4">
-  <select name="tipo_contrato" >
-   <option value = "quincenal" <%= 'selected' if @empleado.esContratoQuincenal? %> >Quincenal</option>
-   <option value = "mensual" <%= 'selected' if @empleado.esContratoMensual? %> >Mensual</option>
-  </select>
-  <br>
-</div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label"for="tipo_salario">Tipo de Salario:</label>
-  <div class="col-md-4">
-  <select id="salario" onchange="cambiar()" name="tipo_salario" >
-   <option value = "por_hora" <%= 'selected' if @empleado.esSalarioPorHora? %> >Por Hora</option>
-   <option value = "fijo" <%= 'selected' if @empleado.esSalarioFijo? %> >Fijo</option>
-  </select>
-  <br>
-</div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label"id="salario_monto">Salario</label>
-  <div class="col-md-4">
-  <input name="salario" type="number" value = "<%= @empleado.devolver_salario%>" /> 
-  <br>
-</div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
-  <div class="col-md-4">
-  <input name="fecha_inicio_contrato" type="date" value="<%= @empleado.fecha_inicio_contrato %>" />
-  <br>
-  <br>
-  <input class="btn btn-success" type="submit" value="Modificar Empleado" />
-</div>
-</div>
-</form>
 
+<form class="form-horizontal" action="/empleados/<%= @empleado.ci %>" method="post" name="modificado" onsubmit="return formulario()">
+	<input type="hidden" name="_method" value="put" />
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="ci">CI:</label>
+		<div class="col-md-4">
+			<input name="ci" id="ci" type="number" value="<%= @empleado.ci %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="nombre">Nombre:</label>
+		<div class="col-md-4">
+			<input name="nombre" type="text" value="<%= @empleado.nombre %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="apellido">Apellido:</label>
+		<div class="col-md-4">
+			<input name="apellido" type="text" value="<%= @empleado.apellido %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="tipo_contrato" value="Tipo de Contrato">Tipo de Contrato:</label>
+		<div class="col-md-4">
+			<select name="tipo_contrato" class="form-control input-md">
+				<option value = "quincenal" <%= 'selected' if @empleado.esContratoQuincenal? %> >Quincenal</option>
+				<option value = "mensual" <%= 'selected' if @empleado.esContratoMensual? %> >Mensual</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="tipo_salario">Tipo de Salario:</label>
+		<div class="col-md-4">
+			<select id="salario" onchange="cambiar()" name="tipo_salario" class="form-control input-md">
+				<option value = "por_hora" <%= 'selected' if @empleado.esSalarioPorHora? %> >Por Hora</option>
+				<option value = "fijo" <%= 'selected' if @empleado.esSalarioFijo? %> >Fijo</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" id="salario_monto">Salario</label>
+		<div class="col-md-4">
+			<input name="salario" type="number" value = "<%= @empleado.devolver_salario%>" class="form-control input-md"/> 
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
+		<div class="col-md-4">
+			<input name="fecha" type="date" value="<%= @empleado.fecha_inicio_contrato %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<input type="submit" value="Modificar Empleado" class="btn btn-success" />
+	</div>
+	
+</form> 
 
 <script type="text/javascript">
 	function cambiar(){
 		var salario=document.getElementById("salario").value;
 		document.getElementById("salario_monto").innerHTML="Salario "+salario;
 	}
+	
 	function formulario() { 
-		var inputVal =  modificado.ci.value
-    	if (inputVal   == "") 
+		var inputVal = modificado.ci.value
+    	if (inputVal == "") 
       	{
         	$("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
         	$("#ci").attr({"placeholder":"obligatorio"});

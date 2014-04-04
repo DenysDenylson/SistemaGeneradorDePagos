@@ -4,14 +4,10 @@ require ('cheque')
 require('tarjeta_de_servicio')
 require('clasificador_salario_fijo')
 require ('contrato_mensual')
-require ('persistencia')
 
 describe "Generar cheque para empleado con salario fijo" do
 
-  subject(:empleado) {Empleado.crearEmpleado(123423,"juan", "Perez",Date.new(2012,1,1),"quincenal","por_hora",1234)}
-  before(:each) do
-    empleado.clasificador_salario = ClasificadorSalarioFijo.new(300, Date.new(2012,1,1))
-  end
+  subject(:empleado) {Empleado.crearEmpleado("3343","Juan", "Perez",Date.new(2013,1,1),"mensual","fijo",0)}
 
   context "Salario Correspondiente" do
 

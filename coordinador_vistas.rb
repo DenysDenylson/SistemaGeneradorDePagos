@@ -13,7 +13,7 @@ end
 
 post '/empleados' do
   empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
-                                    params[:fecha_inicio_contrato],params[:tipo_contrato],
+                                    params[:fecha],params[:tipo_contrato],
                                     params[:tipo_salario],params[:salario])
   RepositorioEmpleado.instance.guardarEmpleado(empleado)
   @empleados = RepositorioEmpleado.instance.recuperarEmpleados
@@ -32,7 +32,7 @@ end
 
 put "/empleados/:ci" do
   empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
-                                    params[:fecha_inicio_contrato],params[:tipo_contrato],
+                                    params[:fecha],params[:tipo_contrato],
                                     params[:tipo_salario],params[:salario])
   
   RepositorioEmpleado.instance.actualizarEmpleados(empleado)

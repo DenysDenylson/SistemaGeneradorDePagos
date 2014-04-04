@@ -1,62 +1,57 @@
 <h1>Registrar empleado</h1>
 <form class="form-horizontal" action="/empleados" method="post" name="nuevo" onsubmit="return formulario()">
-<div class = "form-group">
-  <label class="col-md-4 control-label" for="ci">Ci:</label>
-   <div class="col-md-4">
-  <input name="ci" id="ci" type="number" value=""/>
-  <br>
-  </div>
-  </div>
-  <div class = "form-group">
-  <label class="col-md-4 control-label" for="nombre">Nombre:</label>
-  <div class="col-md-4">
-  <input name="nombre" type="text" value="<%= @empleado.nombre %>" />
-  <br>
-  </div>
-</div>
-  <div class = "form-group">
-  <label class="col-md-4 control-label" for="apellido">Apellido:</label>
-   <div class="col-md-4">
-  <input name="apellido" type="text" value="<%= @empleado.apellido %>" />
-  <br>
-  </div>
-</div>
-   <div class = "form-group">
-  <label class="col-md-4 control-label" for="tipo_contrato" value="Tipo de Contrato">Tipo de Contrato:</label>
-  <div class="col-md-4">
-  <select name="tipo_contrato" >
-   <option value = "quincenal" >Quincenal</option>
-   <option value = "mensual" selected >Mensual</option>
-  </select>
-  <br>
-  </div>
-</div>
-   <div class = "form-group">
-  <label class="col-md-4 control-label" for="tipo_salario">Tipo de Salario:</label>
-   <div class="col-md-4">
-  <select id="salario" onchange="cambiar()" name="tipo_salario" >
-   <option value = "por_hora" >Por Hora</option>
-   <option value = "fijo" selected >Fijo</option>
-  </select>
-  <br>
-  </div>
-</div>
-   <div class = "form-group">
-  <label class="col-md-4 control-label" id="salario_monto">Salario</label>
-   <div class="col-md-4">
-  <input name="salario" type="number" value = "0" /> 
-  <br>
-  </div>
-</div>
-   <div class = "form-group">
-  <label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
-   <div class="col-md-4">
-  <input name="fecha_inicio_contrato" type="date" value="<%= @empleado.fecha_inicio_contrato %>" />
-  <br>
-  <br>
-  <input type="submit" value="Crear Empleado" class="btn btn-success" />
-  </div>
-</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="ci">CI:</label>
+		<div class="col-md-4">
+			<input name="ci" id="ci" type="number" value="" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="nombre">Nombre:</label>
+		<div class="col-md-4">
+			<input name="nombre" type="text" value="<%= @empleado.nombre %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="apellido">Apellido:</label>
+		<div class="col-md-4">
+			<input name="apellido" type="text" value="<%= @empleado.apellido %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="tipo_contrato" value="Tipo de Contrato">Tipo de Contrato:</label>
+		<div class="col-md-4">
+			<select name="tipo_contrato" class="form-control input-md">
+				<option value = "quincenal" >Quincenal</option>
+				<option value = "mensual" selected >Mensual</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="tipo_salario">Tipo de Salario:</label>
+		<div class="col-md-4">
+			<select id="salario" onchange="cambiar()" name="tipo_salario" class="form-control input-md">
+				<option value = "por_hora" >Por Hora</option>
+				<option value = "fijo" selected >Fijo</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" id="salario_monto">Salario</label>
+		<div class="col-md-4">
+			<input name="salario" type="number" placeholder = "0" class="form-control input-md"/> 
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
+		<div class="col-md-4">
+			<input name="fecha" type="date" value="<%= @empleado.fecha_inicio_contrato %>" class="form-control input-md"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<input type="submit" value="Crear Empleado" class="btn btn-success" />
+	</div>
+	
 </form> 
 
 <script type="text/javascript">
@@ -67,14 +62,12 @@
 	
 	function formulario() { 
 		var inputVal = nuevo.ci.value
-    	if (inputVal   == "") 
+    	if (inputVal == "") 
       	{
         	$("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
         	$("#ci").attr({"placeholder":"obligatorio"});
         	nuevo.ci.focus();  
      		return false; 
    		}
-	} 
-</script>
-
+	}
 </script>
