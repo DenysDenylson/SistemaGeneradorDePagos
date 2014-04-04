@@ -6,7 +6,7 @@ require('clasificador_por_hora')
 require ('contrato_quincenal')
 
 describe "Generar cheque para empleado por hora" do
-  subject(:empleado) { Empleado.crearEmpleado(123423,"juan", "Perez",Date.new(2012,1,1),"quincenal","por_hora",50) }
+  subject(:empleado) { Empleado.crearEmpleado("123423","juan", "Perez","2012-1-1","quincenal","por_hora","50") }
 
 	it "deberia generar cheque para un empleado con solo una tarjeta de tiempo" do
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))

@@ -33,7 +33,7 @@ class RepositorioEmpleado
   end
   
   def instanciarNuevoEmpleado
-  	@empleado = Empleado.new('', '', '', Date.today, ContratoMensual.new)
+  	@empleado = Empleado.new('', '', '', Date.new(2014,1,1), ContratoMensual.new)
   	@empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
   	@empleado
 	end

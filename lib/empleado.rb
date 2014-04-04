@@ -64,7 +64,9 @@ class Empleado
 
   def self.crearEmpleado(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato, tipo_salario, salario)
     clasificador_contrato = crear_tipo_contrato(tipo_contrato)
+    fecha_inicio_contrato = Date.parse(fecha_inicio_contrato)
     empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, clasificador_contrato)
+    salario = Integer(salario)
     empleado.crear_tipo_salario(tipo_salario, salario)
     empleado
   end
@@ -95,8 +97,14 @@ class Empleado
       clasificador_contrato = ContratoQuincenal.new
     when "mensual"
       clasificador_contrato = ContratoMensual.new
+    when "trimestral"
+      clasificador_contrato = ContratoTrimestral.new
     end
     clasificador_contrato
+  end
+  
+  def cambiar_clasificador_contrato(clasificador_contrato)
+    @clasificador_contrato = clasificador_contrato
   end
 
   def crear_tipo_salario(tipo_salario,salario)

@@ -12,6 +12,4 @@ class Cheque
     @fecha_emision = fecha_emision
   end
   
-  
-
 end

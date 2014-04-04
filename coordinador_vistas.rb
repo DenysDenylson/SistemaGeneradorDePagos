@@ -46,6 +46,22 @@ get "/eliminar_empleado/:ci" do
   erb :"empleados/lista_empleados"
 end
 
+get "/agregar_tarjeta_tiempo/:ci" do
+  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+  erb :"empleados/agregar_tarjeta_tiempo"
+end
+
+post "/tarjeta_tiempo/:ci" do
+  tarjetaTiempo = TarjetaDeTiempo.new()
+  erb :"empleados/lista_empleados"
+end
+
+get "/cheques" do
+  @empleados =  RepositorioEmpleado.instance.recuperarEmpleados
+  @cheques = RepositorioCheques.instance.generarChequesDe(@empleados)
+  erb :"cheques/lista_cheques"
+end
+
 
 
 

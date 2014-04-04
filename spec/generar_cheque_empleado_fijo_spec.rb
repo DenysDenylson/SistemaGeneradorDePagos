@@ -1,13 +1,15 @@
-require ('empleado')
-require ('generador_cheque')
-require ('cheque')
+require('empleado')
+require('generador_cheque')
+require('cheque')
 require('tarjeta_de_servicio')
 require('clasificador_salario_fijo')
-require ('contrato_mensual')
+require('contrato_trimestral')
+require('contrato_mensual')
+require 'date'
 
 describe "Generar cheque para empleado con salario fijo" do
 
-  subject(:empleado) {Empleado.crearEmpleado("3343","Juan", "Perez",Date.new(2013,1,1),"mensual","fijo",0)}
+  subject(:empleado) {Empleado.crearEmpleado("3343","Juan", "Perez","2013-1-1","mensual","fijo","0")}
 
   context "Salario Correspondiente" do
 
@@ -49,6 +51,13 @@ describe "Generar cheque para empleado con salario fijo" do
     cheque=generador.ejecutar(empleado)
     cheque.should==nil
   end
+  
+  it "a un empleado trimestral solo cobra cada 3 meses" do
+    empleado.cambiar_clasificador_contrato(ContratoTrimestral.new)
+    generador=GeneradorCheque.new(Date.new(2013,3,31))
+    cheque=generador.ejecutar(empleado)
+    cheque.fecha_emision.should == (Date.new(2013,3,31))
+  end
 
   context "Descuentos por sindicato" do
 
@@ -83,5 +92,6 @@ describe "Generar cheque para empleado con salario fijo" do
       cheque = generador.ejecutar(empleado)
       cheque.monto.should == 1670
     end
+    
   end
 end
