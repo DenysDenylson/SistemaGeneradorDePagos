@@ -14,7 +14,6 @@ class ClasificadorSalarioFijo
   end
   
   #### metodos sin test
-  
   def esSalarioFijo?
     true
   end
@@ -26,7 +25,6 @@ class ClasificadorSalarioFijo
   def devolver_salario
     @salario
   end
-
   ####
 
   private
@@ -35,22 +33,21 @@ class ClasificadorSalarioFijo
     salario_diario = calcular_salario_diario(fecha_ejecucion)
     salario_diario * dias_trabajados
   end
-# que es el -1
+  
+# -1 es la forma de obtener el ultimo dia del mes
   def calcular_salario_diario(fecha_ejecucion)
-    fact_salario = @salario / (Date.civil(fecha_ejecucion.year, fecha_ejecucion.month, -1)).day.to_f
+    ultimo_dia_del_mes = -1
+    fact_salario = @salario / (Date.new(fecha_ejecucion.year, fecha_ejecucion.month, ultimo_dia_del_mes)).day
   end
 
-# que es el +1
+# + 1 se usa porque 10 - 1 = 9 pero no cuenta el mismo dia que empezo a trabajar
   def calcular_dias_trabajados_hasta(fecha_ejecucion)
-    dias_trabajados = (fecha_ejecucion.mjd - @fecha_inicio_contrato.mjd) + 1
+    dia_que_empezo_a_trabajar = 1
+    dias_trabajados = (fecha_ejecucion - @fecha_inicio_contrato) + dia_que_empezo_a_trabajar
   end
 
   def ha_sido_contratado_este_mes?(fecha_ejecucion)
     @fecha_inicio_contrato.month==fecha_ejecucion.month && @fecha_inicio_contrato.year==fecha_ejecucion.year
   end
   
-  
-  
-
-
 end

@@ -14,7 +14,7 @@ class Empleado
     @descuento_fijo_por_sindicato = 0
     @tarjetas_de_servicio = Array.new
     @descuento_por_servicios = 0
-    @clasificador_contrato=clasificador_contrato
+    @clasificador_contrato = clasificador_contrato
   end
     #revisar este metodo#
   def es_dia_pago?(fecha)
@@ -66,7 +66,7 @@ class Empleado
     clasificador_contrato = crear_tipo_contrato(tipo_contrato)
     fecha_inicio_contrato = Date.parse(fecha_inicio_contrato)
     empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, clasificador_contrato)
-    salario = Integer(salario)
+    salario = salario.to_f
     empleado.crear_tipo_salario(tipo_salario, salario)
     empleado
   end

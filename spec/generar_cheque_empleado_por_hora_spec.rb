@@ -7,11 +7,11 @@ require ('contrato_quincenal')
 
 describe "Generar cheque para empleado por hora" do
   subject(:empleado) { Empleado.crearEmpleado("123423","juan", "Perez","2012-1-1","quincenal","por_hora","50") }
+  subject(:generador) {GeneradorCheque.new(Date.new(2013,4,12))}
 
 	it "deberia generar cheque para un empleado con solo una tarjeta de tiempo" do
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
-		generador = GeneradorCheque.new(Date.new(2013,4,12))
 		cheque = generador.ejecutar(empleado)
 		cheque.monto.should == 600
 	end
@@ -23,7 +23,6 @@ describe "Generar cheque para empleado por hora" do
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo_1)
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo_2)
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo_3)
-		generador = GeneradorCheque.new(Date.new(2013,4,19))
 		cheque = generador.ejecutar(empleado)
 		cheque.monto.should == 1150
 	end
@@ -32,7 +31,6 @@ describe "Generar cheque para empleado por hora" do
 		empleado.asignar_descuento_sindicato(100)
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
-		generador = GeneradorCheque.new(Date.new(2013,4,12))
 		cheque = generador.ejecutar(empleado)
 		cheque.monto.should == 500
 	end

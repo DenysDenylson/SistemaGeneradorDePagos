@@ -14,4 +14,8 @@ class ContratoMensual
     false
   end
   
+  def esContratoTrimestral?
+    false
+  end
+  
 end
