@@ -22,7 +22,7 @@ class Empleado
   end
   
   #revisar este metodo#
-  def asignar_salario_fijo(monto)
+  def asignar_salario(monto)
      @clasificador_salario.salario = monto
   end
 
@@ -49,11 +49,6 @@ class Empleado
   def calcular_monto_por_servicios_sindicato
     @tarjetas_de_servicio.each { |t| @descuento_por_servicios += t.monto}
     @descuento_por_servicios
-  end
-
-  #revisar este metodo#
-  def asignar_pago_por_hora(monto)
-    @clasificador_salario.monto_por_hora = monto
   end
   
   def registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)

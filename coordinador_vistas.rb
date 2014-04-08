@@ -47,12 +47,14 @@ get "/eliminar_empleado/:ci" do
 end
 
 get "/agregar_tarjeta_tiempo/:ci" do
-  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+  @tarjetaTiempo = TarjetaDeTiempo.new(Date.today, params[:ci], Time.now,Time.now)  
   erb :"empleados/agregar_tarjeta_tiempo"
 end
 
 post "/tarjeta_tiempo/:ci" do
-  tarjetaTiempo = TarjetaDeTiempo.new()
+  tarjetaTiempo = TarjetaDeTiempo.crear_tarjeta(params[:ci], params[:fecha], params[:ingreso], params[:egreso])
+  RepositorioEmpleado.instance.guardarTarjetaDeTiempoParaUnEmpleado(tarjetaTiempo, params[:ci])
+  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
   erb :"empleados/lista_empleados"
 end
 

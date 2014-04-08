@@ -1,25 +1,28 @@
+
 <h1>Agregar Tarjeta de Tiempo</h1>
 <form class="form-horizontal" action="/empleados" method="post">
 	<div class = "form-group">
-		<label class="lead" for="ci">CI : <% = @empleado.ci %></label>
-		<input name="ci" id="ci" type="hidden" value="<% = @empleado.ci %>"/>
+		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">CI:</label>
+		<div class="col-md-4">
+			<input name="ci" id="ci" type="text"  value="<%= @tarjetaTiempo.id_empleado %>" class="form-control input-md" readonly/>
+		</div>
 	</div>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha:</label>
 		<div class="col-md-4">
-			<input name="fecha" type="date" value="<%= @empleado.fecha_inicio_contrato %>" class="form-control input-md"/>
+			<input name="fecha" type="date" value="<%= @tarjetaTiempo.fecha %>" class="form-control input-md"/>
 		</div>
 	</div>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Hora Ingreso:</label>
 		<div class="col-md-4">
-			<input name="fecha" type="time" value="<%= Time.now %>" class="form-control input-md"/>
+			<input name="ingreso" type="time" value="08:00" class="form-control input-md"/>
 		</div>
 	</div>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Hora Salida:</label>
 		<div class="col-md-4">
-			<input name="fecha" type="time" value="<%= Time.now %>" class="form-control input-md"/>
+			<input name="salida" type="time" value="12:00" class="form-control input-md"/>
 		</div>
 	</div>
 	<div class = "form-group">
