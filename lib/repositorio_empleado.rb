@@ -7,12 +7,9 @@ class RepositorioEmpleado
   def initialize
     @empleados = Array.new
     
-    empleado = Empleado.crearEmpleado("123","juan", "Perez","2012-1-1","quincenal","por_hora","50")
-    tarjeta_tiempo = TarjetaDeTiempo.crear_tarjeta( "2012-2-4", "123423", "8:00", "12:00")
-    
-    empleado.registrar_tarjeta_de_tiempo(tarjeta_tiempo)
-    
-    @empleados.push(empleado)
+    @empleados.push(Empleado.crearEmpleado("111","Juan", "Perez","2014-1-1","quincenal","por_hora","50"))
+    @empleados.push(Empleado.crearEmpleado("222","Ana", "Lara","2014-4-10","mensual","fijo","5000"))
+    @empleados.push(Empleado.crearEmpleado("333","Matias", "Soto","2014-2-11","mensual","por_hora","100"))
   end
   
   def guardarEmpleado(empleado)
@@ -29,10 +26,11 @@ class RepositorioEmpleado
   end
   
   def actualizarEmpleados(empleado)
-    @empleados = @empleados.collect{|e| if e.ci == empleado.ci 
-                                          e = empleado
-                                        end
-                                    }
+    @empleados.collect!{|e| if e.ci == empleado.ci 
+                              e = empleado
+                            end
+                            e
+                      }
   end
   
   def eliminarEmpleadoPorCI(ci)
@@ -46,10 +44,11 @@ class RepositorioEmpleado
 	end
 	
 	def guardarTarjetaDeTiempoParaUnEmpleado(tarjeta_tiempo, ci)
-	  @empleados = @empleados.collect{|e| if e.ci == ci 
-                                          e.registrar_tarjeta_de_tiempo(tarjeta_tiempo)
-                                        end
-                                   }
+	  @empleados.collect!{|e| if e.ci == ci 
+                              e.registrar_tarjeta_de_tiempo(tarjeta_tiempo)
+                            end
+                            e
+                       }
   end
   
 end

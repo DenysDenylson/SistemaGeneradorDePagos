@@ -78,6 +78,10 @@ class Empleado
     @clasificador_contrato.esContratoQuincenal?
   end
   
+  def esContratoTrimestral?
+    @clasificador_contrato.esContratoTrimestral?
+  end
+  
   def esSalarioFijo?
     @clasificador_salario.esSalarioFijo?
   end

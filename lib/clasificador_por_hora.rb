@@ -1,5 +1,5 @@
 class ClasificadorPorHora
-  attr_writer :monto_por_hora
+  attr_writer :salario
 
   def initialize(monto_por_hora)
     @tarjetas_de_tiempo = Array.new

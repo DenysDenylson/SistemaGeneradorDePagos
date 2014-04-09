@@ -1,6 +1,6 @@
 <h1>Modificar empleado</h1>
 
-<form class="form-horizontal" action="/empleados/<%= @empleado.ci %>" method="post" name="modificado" onsubmit="return formulario()">
+<form class="form-horizontal" action="/modificar_empleados" method="post" name="modificado" onsubmit="return formulario()">
 	<input type="hidden" name="_method" value="put" />
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="ci">CI:</label>
@@ -26,6 +26,7 @@
 			<select name="tipo_contrato" class="form-control input-md">
 				<option value = "quincenal" <%= 'selected' if @empleado.esContratoQuincenal? %> >Quincenal</option>
 				<option value = "mensual" <%= 'selected' if @empleado.esContratoMensual? %> >Mensual</option>
+				<option value = "mensual" <%= 'selected' if @empleado.esContratoTrimestal? %> >Trimestral</option>
 			</select>
 		</div>
 	</div>

@@ -30,7 +30,7 @@ get "/modificar_empleado/:ci" do
   erb :"empleados/modificar_empleado"
 end
 
-put "/empleados/:ci" do
+put "/modificar_empleados" do
   empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
                                     params[:fecha],params[:tipo_contrato],
                                     params[:tipo_salario],params[:salario])
@@ -51,9 +51,9 @@ get "/agregar_tarjeta_tiempo/:ci" do
   erb :"empleados/agregar_tarjeta_tiempo"
 end
 
-post "/tarjeta_tiempo/:ci" do
-  tarjetaTiempo = TarjetaDeTiempo.crear_tarjeta(params[:ci], params[:fecha], params[:ingreso], params[:egreso])
-  RepositorioEmpleado.instance.guardarTarjetaDeTiempoParaUnEmpleado(tarjetaTiempo, params[:ci])
+post "/guardar_tarjeta_tiempo" do
+  tarjeta_tiempo = TarjetaDeTiempo.crear_tarjeta(params[:fecha], params[:ci], params[:ingreso], params[:salida])
+  RepositorioEmpleado.instance.guardarTarjetaDeTiempoParaUnEmpleado(tarjeta_tiempo, params[:ci])
   @empleados = RepositorioEmpleado.instance.recuperarEmpleados
   erb :"empleados/lista_empleados"
 end
