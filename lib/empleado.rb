@@ -10,10 +10,6 @@ class Empleado
     @nombre = nombre
     @apellido = apellido
     @fecha_inicio_contrato = fecha_inicio_contrato
-
-    @descuento_fijo_por_sindicato = 0
-    @tarjetas_de_servicio = Array.new
-    @descuento_por_servicios = 0
     @clasificador_contrato = clasificador_contrato
   end
     #revisar este metodo#
@@ -33,22 +29,7 @@ class Empleado
 
   #revisar este metodo#
   def calcular_salario(fecha_ejecucion)
-    @clasificador_salario.calcular_salario(fecha_ejecucion) - @descuento_fijo_por_sindicato - calcular_monto_por_servicios_sindicato
-  end
-
-  def asignar_descuento_sindicato(monto)
-    @descuento_fijo_por_sindicato = monto
-  end
-
-  #revisar este metodo#
-  def registrar_tarjeta_de_servicio(tarjeta_de_servicio)
-    @tarjetas_de_servicio.push(tarjeta_de_servicio)
-  end
-
-  #revisar este metodo (diccionario en ahorcado)#
-  def calcular_monto_por_servicios_sindicato
-    @tarjetas_de_servicio.each { |t| @descuento_por_servicios += t.monto}
-    @descuento_por_servicios
+    @clasificador_salario.calcular_salario(fecha_ejecucion)
   end
   
   def registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)

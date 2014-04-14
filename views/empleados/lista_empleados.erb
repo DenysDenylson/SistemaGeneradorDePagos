@@ -8,11 +8,8 @@
 	            <th>CI</th>
 	            <th>Nombre</th>
 	            <th>Apellido</th>
-	            <th>Fecha de Contrato</th>
 	            <th>Tipo de Contrato</th>
 	            <th>Tipo de Salario</th>
-				<th>Salario</th>
-	
 		        <th></th>
 		        <th>Opciones</th>
 			    <th></th>
@@ -28,10 +25,8 @@
 	            	<td><%= empleado.ci %></td>
 	            	<td><%= empleado.nombre %></td>
 	            	<td><%= empleado.apellido %></td>
-	            	<td><%= empleado.fecha_inicio_contrato %></td>
 	            	<td><%= empleado.clasificador_contrato.class.name %></td>
 					<td><%= empleado.clasificador_salario.class.name %></td>
-					<td><%= empleado.devolver_salario %></td>
 					<td><a href = "/ver_empleado/<%= empleado.ci %>"  class="btn btn-primary"> Ver </a></td>
 	            	<td><a href = "/modificar_empleado/<%= empleado.ci %>"  class="btn btn-primary"> Modificar</a></td>
 	            	<td><a href = "/eliminar_empleado/<%= empleado.ci %>" class="btn btn-danger"> Eliminar </a></td>

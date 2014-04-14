@@ -12,7 +12,7 @@ class RepositorioEmpleado
     @empleados.push(Empleado.crearEmpleado("333","Matias", "Soto","2014-2-11","trimestral","por_hora","100"))
   end
   
-  def guardarEmpleado(empleado)
+  def guardar(empleado)
     @empleados.push(empleado)
   end
   
@@ -20,12 +20,12 @@ class RepositorioEmpleado
     @empleados
   end
 
-  def recuperarEmpleadoPorCI(ci) 
+  def recuperarPorCI(ci) 
     empleado = @empleados.select{|e| e.ci == ci }
     empleado.first
   end
   
-  def actualizarEmpleados(empleado)
+  def actualizar(empleado)
     @empleados.collect!{|e| if e.ci == empleado.ci 
                               e = empleado
                             end
@@ -33,11 +33,11 @@ class RepositorioEmpleado
                       }
   end
   
-  def eliminarEmpleadoPorCI(ci)
+  def eliminarPorCI(ci)
     @empleados.delete_if{|e| e.ci == ci}
   end
   
-  def instanciarNuevoEmpleado
+  def instanciarNuevo
   	empleado = Empleado.new('', '', '', Date.new(2014,1,1), ContratoMensual.new)
   	empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
   	empleado

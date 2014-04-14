@@ -1,0 +1,29 @@
+<h1>Sindicato: <%= @sindicato.nombre %></h1>
+<h4>Descuento fijo: <%= @sindicato.descuento_fijo%></h4>
+<br>
+<h2>Lista de tarjetas de servicio
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+	    	<tr>
+	        	<th>#</th>
+	            <th>CI</th>
+	            <th>Fecha</th>
+	            <th>Monto</th>
+				<th>Descripcion</th>
+	     	</tr>
+		</thead>
+		<tbody>
+			<% numeroTarjetas = 0 %>
+			<% @sindicato.tarjetas_servicio.each do |tarjeta|%>
+	        	<tr>
+	            	<td><%= numeroTarjetas += 1 %></td>
+	            	<td><%= tarjeta.id_empleado %></td>
+	            	<td><%= tarjeta.fecha %></td>
+	            	<td><%= tarjeta.monto %></td>
+	            	<td><%= tarjeta.descripcion %></td>
+				</tr>
+			<% end %>
+ 		</tbody>
+	</table>
+</div>

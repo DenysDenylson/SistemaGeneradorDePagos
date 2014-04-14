@@ -4,11 +4,10 @@ require 'date'
 class RepositorioCheques 
   include Singleton
   
-  def generarChequesDe(empleados)
+  def generarChequesDe(empleados, sindicato)
     cheques = []
-    generadorCheques = GeneradorCheque.new(Date.new(2011,9,30))
-    empleados.each do |e| cheques.push(generadorCheques.ejecutar(e))
-    end
+    generador = GeneradorCheque.new(Date.new(2011,9,30))
+    empleados.each do |empleado| cheques.push(generador.ejecutar(empleado,sindicato)) end
     cheques
   end
   
