@@ -46,6 +46,15 @@
 		</div>
 	</div>
 	<div class = "form-group">
+		<label class="col-md-4 control-label" for="tiene_sindicato">Pertenece al Sindicato:</label>
+		<div class="col-md-4">
+			<select name="tiene_sindicato" class="form-control input-md">
+				<option value = "true" <%= 'selected' if @empleado.tiene_sindicato %> >Si</option>
+				<option value = "false" <%= 'selected' if !@empleado.tiene_sindicato %> >No</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
 		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
 		<div class="col-md-4">
 			<input name="fecha" type="date" value="<%= @empleado.fecha_inicio_contrato %>" class="form-control input-md"/>

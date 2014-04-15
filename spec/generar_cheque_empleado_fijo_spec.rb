@@ -9,7 +9,7 @@ require 'date'
 
 describe "Generar cheque para empleado con salario fijo" do
 
-  subject(:empleado) {Empleado.crearEmpleado("3343","Juan", "Perez","2013-1-1","mensual","fijo","500")}
+  subject(:empleado) {Empleado.crearEmpleado("3343","Juan", "Perez","2013-1-1","false","mensual","fijo","500")}
   subject(:generador) {GeneradorCheque.new(Date.new(2013,6,30))}
 
   context "Salario Correspondiente" do
@@ -54,6 +54,8 @@ describe "Generar cheque para empleado con salario fijo" do
   end
 
   context "Descuentos por sindicato" do
+    
+    subject(:empleado) {Empleado.crearEmpleado("3343","Juan", "Perez","2013-1-1","true","mensual","fijo","500")}
     
     subject(:sindicato) {Sindicato.new("6_agosto", Date.new(2013,1,1), 100)}
     

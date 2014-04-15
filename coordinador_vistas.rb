@@ -12,8 +12,8 @@ get '/nuevo_empleado' do
 end
 
 post '/empleados' do
-  empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
-                                    params[:fecha],params[:tipo_contrato],
+  empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],params[:fecha],
+                                    params[:tiene_sindicato],params[:tipo_contrato],
                                     params[:tipo_salario],params[:salario])
   RepositorioEmpleado.instance.guardar(empleado)
   @empleados = RepositorioEmpleado.instance.recuperarEmpleados
@@ -31,10 +31,9 @@ get "/modificar_empleado/:ci" do
 end
 
 put "/modificar_empleados" do
-  empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],
-                                    params[:fecha],params[:tipo_contrato],
+  empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],params[:fecha],
+                                    params[:tiene_sindicato],params[:tipo_contrato],
                                     params[:tipo_salario],params[:salario])
-  
   RepositorioEmpleado.instance.actualizar(empleado)
   @empleados = RepositorioEmpleado.instance.recuperarEmpleados
   erb :"empleados/lista_empleados"

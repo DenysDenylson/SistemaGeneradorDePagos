@@ -7,9 +7,9 @@ class RepositorioEmpleado
   def initialize
     @empleados = Array.new
     
-    @empleados.push(Empleado.crearEmpleado("111","Juan", "Perez","2014-1-1","quincenal","por_hora","50"))
-    @empleados.push(Empleado.crearEmpleado("222","Ana", "Lara","2014-4-10","mensual","fijo","5000"))
-    @empleados.push(Empleado.crearEmpleado("333","Matias", "Soto","2014-2-11","trimestral","por_hora","100"))
+    @empleados.push(Empleado.crearEmpleado("111","Juan", "Perez","2014-1-1","false","quincenal","por_hora","50"))
+    @empleados.push(Empleado.crearEmpleado("222","Ana", "Lara","2014-4-10","false","mensual","fijo","5000"))
+    @empleados.push(Empleado.crearEmpleado("333","Matias", "Soto","2014-2-11","false","trimestral","por_hora","100"))
   end
   
   def guardar(empleado)

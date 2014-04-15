@@ -3,7 +3,7 @@ require('date')
 #ManejadorEmpleado#
 class Empleado
   
-  attr_accessor :nombre, :apellido, :ci, :clasificador_salario, :clasificador_contrato, :fecha_inicio_contrato
+  attr_accessor :nombre, :apellido, :ci, :clasificador_salario, :clasificador_contrato, :fecha_inicio_contrato, :tiene_sindicato
 
   def initialize(ci, nombre, apellido, fecha_inicio_contrato,clasificador_contrato)
     @ci = ci
@@ -11,6 +11,7 @@ class Empleado
     @apellido = apellido
     @fecha_inicio_contrato = fecha_inicio_contrato
     @clasificador_contrato = clasificador_contrato
+    @tiene_sindicato = false
   end
     #revisar este metodo#
   def es_dia_pago?(fecha)
@@ -38,11 +39,12 @@ class Empleado
 
 ##pruebas para la UI
 
-  def self.crearEmpleado(ci, nombre, apellido, fecha_inicio_contrato, tipo_contrato, tipo_salario, salario)
+  def self.crearEmpleado(ci, nombre, apellido, fecha_inicio_contrato, tiene_sindicato, tipo_contrato, tipo_salario, salario)
     clasificador_contrato = crear_tipo_contrato(tipo_contrato)
     fecha_inicio_contrato = Date.parse(fecha_inicio_contrato)
     empleado = Empleado.new(ci, nombre, apellido, fecha_inicio_contrato, clasificador_contrato)
     salario = salario.to_f
+    empleado.string_to_bool(tiene_sindicato)
     empleado.crear_tipo_salario(tipo_salario, salario)
     empleado
   end
@@ -96,19 +98,14 @@ class Empleado
     end
   end
   
+  def string_to_bool(tiene_sindicato)
+    if tiene_sindicato == "true"
+      @tiene_sindicato = true
+    else
+      @tiene_sindicato = false
+    end
+  end
+  
   
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
