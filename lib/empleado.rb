@@ -112,6 +112,7 @@ class Empleado
     @apellido = empleado.apellido
     @fecha_inicio_contrato = empleado.fecha_inicio_contrato
     @clasificador_contrato = empleado.clasificador_contrato
+    @clasificador_salario.salario = empleado.devolver_salario
     if @clasificador_salario.class != empleado.clasificador_salario.class
       @clasificador_salario = empleado.clasificador_salario
     end
