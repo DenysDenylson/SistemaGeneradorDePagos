@@ -48,7 +48,7 @@ class Empleado
     empleado.crear_tipo_salario(tipo_salario, salario)
     empleado
   end
- 
+
   def devolver_salario
     @clasificador_salario.devolver_salario
   end
@@ -105,10 +105,6 @@ class Empleado
       @tiene_sindicato = false
     end
   end
-   def tiene_Sindicato?
-    @tiene_sindicato
-  end
-
   
   
 end

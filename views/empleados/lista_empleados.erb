@@ -14,7 +14,6 @@
 		        <th>Opciones</th>
 			    <th></th>
 				<th>Tarjetas de Tiempo</th>
-				<th>Tarjetas de Servicio</th>
 		
 	     	</tr>
 		</thead>
@@ -34,12 +33,6 @@
 	            	<td>
 						<a style = "<%= 'display:none;' unless empleado.esSalarioPorHora? %>" 
 						   href = "/agregar_tarjeta_tiempo/<%= empleado.ci %>"  class="btn btn-primary"> 
-							Agregar 
-						</a>
-					</td>
-						<td>
-						<a style = "<%= 'display:none;' unless empleado.tiene_Sindicato? %>" 
-						   href = "/agregar_tarjeta_tiempo/<%= empleado.ci %>"  class="btn btn-info"> 
 							Agregar 
 						</a>
 					</td>
