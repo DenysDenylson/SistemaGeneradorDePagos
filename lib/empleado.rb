@@ -106,6 +106,20 @@ class Empleado
     end
   end
   
+  def modificar_atributos(empleado)
+    @ci = empleado.ci
+    @nombre = empleado.nombre
+    @apellido = empleado.apellido
+    @fecha_inicio_contrato = empleado.fecha_inicio_contrato
+    @clasificador_contrato = empleado.clasificador_contrato
+    if @clasificador_salario.class != empleado.clasificador_salario.class
+      @clasificador_salario = empleado.clasificador_salario
+    end
+    @tiene_sindicato = empleado.tiene_sindicato
+  end
+  
+  
+  
   
 end
 

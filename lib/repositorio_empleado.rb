@@ -27,7 +27,7 @@ class RepositorioEmpleado
   
   def actualizar(empleado)
     @empleados.collect!{|e| if e.ci == empleado.ci 
-                              e = empleado
+                              e.modificar_atributos(empleado)
                             end
                             e
                       }
