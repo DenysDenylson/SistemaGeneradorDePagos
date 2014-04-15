@@ -31,5 +31,8 @@ class RepositorioSindicato
   def eliminar (id_tarjeta)
     @sindicato.eliminar(id_tarjeta)
   end
+  def modificar_sindicato_repositorio(sindicato)
+    @sindicato.modificar_datos_con_otro(sindicato)
+  end
   
 end
