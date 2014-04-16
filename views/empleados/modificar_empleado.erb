@@ -49,8 +49,8 @@
 		<label class="col-md-4 control-label" for="tiene_sindicato">Pertenece al Sindicato:</label>
 		<div class="col-md-4">
 			<select name="tiene_sindicato" class="form-control input-md">
-				<option value = "true" <%= 'selected' if @empleado.tiene_sindicato %> >Si</option>
-				<option value = "false" <%= 'selected' if !@empleado.tiene_sindicato %> >No</option>
+				<option value = "true" <%= 'selected' if @empleado.tiene_sindicato? %> >Si</option>
+				<option value = "false" <%= 'selected' if !@empleado.tiene_sindicato? %> >No</option>
 			</select>
 		</div>
 	</div>

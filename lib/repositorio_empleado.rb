@@ -19,6 +19,20 @@ class RepositorioEmpleado
   def recuperarEmpleados
     @empleados
   end
+  
+  def recuperarEmpleadosConSindicato
+    empleados = []
+    @empleados.each do |empleado| empleados.push(empleado) if empleado.tiene_sindicato? end
+    empleados
+  end
+  
+  def hayEmpleadosConSindicato?
+    if recuperarEmpleadosConSindicato == []
+      return false
+    else
+      return true
+    end
+  end
 
   def recuperarPorCI(ci) 
     empleado = @empleados.select{|e| e.ci == ci }
