@@ -81,6 +81,7 @@ post "/nuevo_sindicato" do
   erb :"sindicato/ver_sindicato"
 end
 get "/modificar_sindicato" do
+  @sindicato = RepositorioSindicato.instance.retornar_sindicato()
   erb :"sindicato/modificar_sindicato"
 end
 put "/guardar_sindicato"do 
