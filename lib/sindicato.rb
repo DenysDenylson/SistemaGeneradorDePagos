@@ -28,16 +28,21 @@ class Sindicato
   end
   
   ###metodos sin test
+  def recuperar_por (object_id)
+    tarjetas = @tarjetas_servicio.select{|ts| ts.object_id == object_id.to_i }
+    tarjetas.first
+  end
+  
   def modificar (tarjeta_servicio, id_tarjeta)
-    @tarjetas_servicio.collect!{ |tarjeta| if tarjeta.object_id == id_tarjeta
-                                              tarjeta.modificar_datos_con_otra(tarjeta_servicio)
-                                          end
-                                          tarjeta
+    @tarjetas_servicio.collect!{ |ts| if ts.object_id == id_tarjeta.to_i
+                                        ts.modificar_datos_con_otra(tarjeta_servicio)
+                                      end
+                                        ts
                                 }
   end
   
   def eliminar (id_tarjeta)
-    @tarjetas_servicio.delete_if{|ts| ts.object_id == id_tarjeta}
+    @tarjetas_servicio.delete_if{|ts| ts.object_id == id_tarjeta.to_i}
   end
   
   def modificar_datos_con_otro (sindicato)
@@ -57,3 +62,13 @@ class Sindicato
   ###
   
 end
+
+
+
+
+
+
+
+
+
+
