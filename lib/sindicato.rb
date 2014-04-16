@@ -31,7 +31,7 @@ class Sindicato
   end
   
   ###metodos sin test
-  def recuperar_por (object_id)
+  def recuperar_tarjeta_servicio_por (object_id)
     tarjetas = @tarjetas_servicio.select{|ts| ts.object_id == object_id.to_i }
     tarjetas.first
   end
