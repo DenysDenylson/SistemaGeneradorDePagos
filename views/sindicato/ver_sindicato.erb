@@ -5,6 +5,17 @@
             <a href="/modificar_sindicato" class="btn btn-success">Modificar Sindicato</a>
         	</div>
 <h2>Lista de tarjetas de servicio
+
+<div class="text-right">
+	<a href="/modificar_sindicato" class="btn btn-primary text-center">Modificar Sindicato</a>
+</div>
+
+<% if @hay_empleados_con_sindicato %>
+<h2>Lista de tarjetas de servicio</h2>
+<div class="text-center">
+	<a href="/tarjeta_servicio" class="btn btn-success text-right">Nueva Tarjeta de Servicio</a>
+</div>
+
 <div class="table-responsive">
 	<table class="table table-striped">
 		<thead>
@@ -14,6 +25,8 @@
 	            <th>Fecha</th>
 	            <th>Monto</th>
 				<th>Descripcion</th>
+		        <th>Opciones</th>
+			    <th></th>
 	     	</tr>
 		</thead>
 		<tbody>
@@ -21,12 +34,15 @@
 			<% @sindicato.tarjetas_servicio.each do |tarjeta|%>
 	        	<tr>
 	            	<td><%= numeroTarjetas += 1 %></td>
-	            	<td><%= tarjeta.id_empleado %></td>
+	            	<td><%= tarjeta.ci_empleado %></td>
 	            	<td><%= tarjeta.fecha %></td>
 	            	<td><%= tarjeta.monto %></td>
 	            	<td><%= tarjeta.descripcion %></td>
+					<td><a href="/modificar_tarjeta_servicio/<%= tarjeta.object_id %>"  class="btn btn-primary"> Modificar</a></td>
+	            	<td><a href="/eliminar_tarjeta_servicio/<%= tarjeta.object_id %>" class="btn btn-danger"> Eliminar </a></td>
 				</tr>
 			<% end %>
  		</tbody>
 	</table>
 </div>
+<% end %>
