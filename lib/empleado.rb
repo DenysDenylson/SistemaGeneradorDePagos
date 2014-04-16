@@ -73,6 +73,10 @@ class Empleado
     @clasificador_salario.esSalarioPorHora?
   end
   
+  def tiene_sindicato?
+    @tiene_sindicato
+  end
+  
   def self.crear_tipo_contrato(tipo_contrato)
     case tipo_contrato
     when "quincenal"
@@ -119,7 +123,17 @@ class Empleado
     @tiene_sindicato = empleado.tiene_sindicato
   end
   
+  def devolver_cadena
+    @ci + " - " + @nombre + " " + @apellido
+  end
   
+  def verificar_ci(ci)
+    if @ci == ci
+      return true
+    else
+      return false
+    end
+  end
   
   
 end

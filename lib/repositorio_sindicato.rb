@@ -20,6 +20,10 @@ class RepositorioSindicato
     @sindicato == nil
   end
   
+  def recuperar_por (object_id)
+    @sindicato.recuperar_por(object_id)
+  end
+  
   def agregar (tarjeta_servicio)
     @sindicato.agregar(tarjeta_servicio)
   end
@@ -28,7 +32,7 @@ class RepositorioSindicato
     @sindicato.modificar(tarjeta_servicio,id_tarjeta)
   end
   
-  def eliminar (id_tarjeta)
+  def eliminar_por (id_tarjeta)
     @sindicato.eliminar(id_tarjeta)
   end
   def modificar_sindicato_repositorio(sindicato)
