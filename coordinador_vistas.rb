@@ -81,6 +81,14 @@ post "/nuevo_sindicato" do
   RepositorioSindicato.instance.crear(@sindicato)
   erb :"sindicato/ver_sindicato"
 end
+get "/modificar_sindicato" do
+  erb :"sindicato/modificar_sindicato"
+end
+put "/guardar_sindicato"do 
+@sindicato=Sindicato.crear_sindicato(params[:nombre],params[:fecha],params[:descuento])
+RepositorioSindicato.instance.modificar_sindicato_repositorio(@sindicato)
+erb :"sindicato/ver_sindicato"  
+end
 
 get "/tarjeta_servicio" do
   @date = Date.today

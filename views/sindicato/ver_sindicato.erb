@@ -1,9 +1,13 @@
 <h1>Sindicato: <%= @sindicato.nombre %></h1>
 <h4>Descuento fijo: <%= @sindicato.descuento_fijo%></h4>
 <br>
+<div class="text-right">
+	<a href="/modificar_sindicato" class="btn btn-primary text-center">Modificar Sindicato</a>
+</div>
+
 <% if @hay_empleados_con_sindicato %>
 <h2>Lista de tarjetas de servicio</h2>
-<div class="text-right">
+<div class="text-center">
 	<a href="/tarjeta_servicio" class="btn btn-success text-right">Nueva Tarjeta de Servicio</a>
 </div>
 <div class="table-responsive">
