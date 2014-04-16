@@ -23,7 +23,10 @@ class Sindicato
   
   def calcular_servicio_para_empleado (ci_empleado)
     monto_tarjetas = 0
-    @tarjetas_servicio.each do |tarjeta| monto_tarjetas += tarjeta.monto end
+    @tarjetas_servicio.each do |tarjeta| if tarjeta.ci_empleado == ci_empleado
+                                            monto_tarjetas += tarjeta.monto 
+                                         end
+                            end
     @descuento_fijo + monto_tarjetas
   end
   
