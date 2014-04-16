@@ -1,51 +1,59 @@
 <h1>Ver empleado</h1>
 <form class="form-horizontal" >
-<br>
-<div class = "form-group">
-		<label class="col-md-6 control-label">CI:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.ci %></p>		
-		</div>
+	<fieldset>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">CI</label>  
+	  <div class="col-md-2">
+	  	<input type="text" value="<%= @empleado.ci%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Nombre:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.nombre %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Nombre</label>  
+	  <div class="col-md-2">
+	  	<input type="text" value="<%= @empleado.nombre%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Apellido:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.apellido %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Apellido</label>  
+	  <div class="col-md-2">
+	  	<input type="text" value="<%= @empleado.apellido%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Tipo de Contrato:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.clasificador_contrato.class %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Tipo de Contrato</label>  
+	  <div class="col-md-3">
+	  	<input type="text" value="<%= @empleado.clasificador_contrato.class%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Tipo Salario:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.clasificador_salario.class %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Tipo de Salario</label>  
+	  <div class="col-md-3">
+	  	<input type="text" value="<%= @empleado.clasificador_salario.class%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Sueldo:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.devolver_salario %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Monto</label>  
+	  <div class="col-md-2">
+	  	<input type="text" value="<%= @empleado.devolver_salario%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Fecha Inicio de Contrato:</label>
-		<div class="col-md-2">
-			<p class="lead"><%= @empleado.fecha_inicio_contrato %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Pertenece a Sindicato</label>  
+	  <div class="col-md-2">
+	  	<input type="text" value="<%= if  @empleado.tiene_sindicato? 
+										'Si'
+									  else
+										'No'
+									  end
+								   %>" class="form-control input-md" readonly>
+	  </div>
 	</div>
-<div class = "form-group">
-		<label class="col-md-6 control-label">Sindicato:</label>
-		<div class="col-md-1">
-			<p class="lead"><%= @empleado.tiene_sindicato %></p>		
-		</div>
+	<div class="form-group">
+	  <label class="col-md-5 control-label" for="">Fecha</label>  
+	  <div class="col-md-2">
+	  	<input type="text" value="<%= @empleado.fecha_inicio_contrato%>" class="form-control input-md" readonly>
+	  </div>
 	</div>
+	</fieldset>
+</form>
+	
