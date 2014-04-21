@@ -48,12 +48,6 @@ class Sindicato
     @tarjetas_servicio.delete_if{|ts| ts.object_id == id_tarjeta.to_i}
   end
   
-  def modificar_datos_con_otro (sindicato)
-    @nombre = sindicato.nombre
-    @fecha = sindicato.fecha
-    @descuento_fijo = sindicato.descuento_fijo
-  end
-  
   def self.crear_sindicato(nombre, fecha, descuento_fijo)
     fecha = Date.parse(fecha)
     if descuento_fijo == ""

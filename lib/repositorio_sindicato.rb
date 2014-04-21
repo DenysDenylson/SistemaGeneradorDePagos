@@ -13,7 +13,7 @@ class RepositorioSindicato
   end
   
   def modificar (sindicato)
-    @sindicato.modificar_datos_con_otro(sindicato)
+    @sindicato.modificar_datos(sindicato.nombre, sindicato.fecha, sindicato.descuento)
   end
   
   def retornar_sindicato
