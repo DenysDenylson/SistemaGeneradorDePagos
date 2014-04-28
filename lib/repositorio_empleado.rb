@@ -68,13 +68,13 @@ class RepositorioEmpleado
   end
   def recuperarDeArchivo #revisar la ruta del archivo
     empleados=[]
-    File.open('./usuarios.json', "r+") do |file| 
+    File.open('usuarios.json', "r+") do |file| 
     		while linea= file.gets
     			ayudante=Oj.load(linea)
     			empleados.push(ayudante)
     		end
     	end
-      empleados
+      @empleados=empleados
   end
   
 end
