@@ -10,10 +10,8 @@ class RepositorioJson
   end
   def cambiarEstado
     if recuperarEstado?
-      eliminarArchivo
       @estado_json=false
     else
-      adicionarTodosLosEmpleados
       @estado_json=true
     end
   end
@@ -36,5 +34,16 @@ class RepositorioJson
   
   def recuperarEstado?
     @estado_json
+  end
+  
+  def recuperarEmpleadoJson
+    empleados=[]
+    File.open('usuarios.json', "r+") do |file| 
+    		while linea= file.gets
+    			ayudante=Oj.load(linea)
+    			empleados.push(ayudante)
+    		end
+    	end
+    empleados
   end
 end

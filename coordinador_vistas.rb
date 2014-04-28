@@ -2,8 +2,11 @@ require './gemas'
 require 'sinatra'
 
 get '/' do
-  RepositorioJson.instance.cambiarEstado
-  @empleados=  RepositorioEmpleado.instance.recuperarDeArchivo
+  if RepositorioJson.instance.recuperarEstado?
+     @empleados=RepositorioEmpleado.instance.recuperarDeArchivos
+  else
+      @empleados=RepositorioEmpleado.instance.recuperarEmpleados
+  end
   erb :"empleados/lista_empleados"
 end
 
@@ -136,6 +139,19 @@ get "/eliminar_tarjeta_servicio/:object_id" do
   RepositorioSindicato.instance.eliminar_tarjeta_servicio_por(params[:object_id])  
   @sindicato = RepositorioSindicato.instance.retornar_sindicato
   erb :"sindicato/ver_sindicato"
+end
+
+get "/archivosJson" do
+  RepositorioJson.instance.adicionarTodosLosEmpleados
+  RepositorioJson.instance.cambiarEstado
+  @empleados=RepositorioJson.instance.recuperarEmpleadoJson
+  erb :"empleados/lista_empleados"
+end
+get "/memoria" do
+  RepositorioJson.instance.eliminarArchivo
+  RepositorioJson.instance.cambiarEstado
+  @empleados=RepositorioEmpleado.instance.recuperarEmpleados
+  erb :"empleados/lista_empleados"
 end
 
 
