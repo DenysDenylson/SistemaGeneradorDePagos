@@ -20,8 +20,13 @@ post '/empleados' do
   empleado = Empleado.crearEmpleado(params[:ci],params[:nombre],params[:apellido],params[:fecha],
                                     params[:tiene_sindicato],params[:tipo_contrato],
                                     params[:tipo_salario],params[:salario])
-  RepositorioEmpleado.instance.guardar(empleado)
-  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+  if RepositorioJson.instance.recuperarEstado?
+    RepositorioJson.instance.adiccionarEmpleado(empleado)
+    @empleados=RepositorioJson.instance.recuperarEmpleadoJson
+  else
+     RepositorioEmpleado.instance.guardar(empleado)
+     @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+  end                                  
   erb :"empleados/lista_empleados"
 end
 
@@ -142,9 +147,13 @@ get "/eliminar_tarjeta_servicio/:object_id" do
 end
 
 get "/archivosJson" do
-  RepositorioJson.instance.adicionarTodosLosEmpleados
-  RepositorioJson.instance.cambiarEstado
+  if RepositorioJson.instance.recuperarEstado?
   @empleados=RepositorioJson.instance.recuperarEmpleadoJson
+  else
+  RepositorioJson.instance.cambiarEstado
+  RepositorioJson.instance.adicionarTodosLosEmpleados
+  @empleados=RepositorioJson.instance.recuperarEmpleadoJson
+  end
   erb :"empleados/lista_empleados"
 end
 get "/memoria" do
