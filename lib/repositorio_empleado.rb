@@ -66,7 +66,7 @@ class RepositorioEmpleado
                             e
                        }
   end
-  def recuperarDeArchivo #revisar la ruta del archivo
+  def recuperarDeArchivo 
     empleados=[]
     File.open('usuarios.json', "r+") do |file| 
     		while linea= file.gets
