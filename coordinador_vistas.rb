@@ -3,6 +3,9 @@ require 'sinatra'
 
 get '/' do
   @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+   @empleados.each do |empleado| 
+     RepositorioJson.instance.adiccionarEmpleado(empleado)
+   end
   erb :"empleados/lista_empleados"
 end
 
