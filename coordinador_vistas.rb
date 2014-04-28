@@ -2,10 +2,8 @@ require './gemas'
 require 'sinatra'
 
 get '/' do
-  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
-   @empleados.each do |empleado| 
-     RepositorioJson.instance.adiccionarEmpleado(empleado)
-   end
+    @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+    RepositorioJson.instance.adicionarTodosLosEmpleados
   erb :"empleados/lista_empleados"
 end
 

@@ -1,5 +1,7 @@
 require 'singleton'
 require 'date'
+require 'json'
+require 'oj'
 
 class RepositorioEmpleado 
   include Singleton
@@ -63,6 +65,16 @@ class RepositorioEmpleado
                             end
                             e
                        }
+  end
+  def recuperarDeArchivo #revisar la ruta del archivo
+    empleados=[]
+    File.open('./usuarios.json', "r+") do |file| 
+    		while linea= file.gets
+    			ayudante=Oj.load(linea)
+    			empleados.push(ayudante)
+    		end
+    	end
+      empleados
   end
   
 end
