@@ -148,9 +148,13 @@ get "/archivosJson" do
   erb :"empleados/lista_empleados"
 end
 get "/memoria" do
-  RepositorioJson.instance.eliminarArchivo
-  RepositorioJson.instance.cambiarEstado
+  if RepositorioJson.instance.verificarExiste?
+    RepositorioJson.instance.cambiarEstado
+    @empleados=RepositorioEmpleado.instance.recuperarDeArchivo
+     RepositorioJson.instance.eliminarArchivo
+  else
   @empleados=RepositorioEmpleado.instance.recuperarEmpleados
+  end
   erb :"empleados/lista_empleados"
 end
 
