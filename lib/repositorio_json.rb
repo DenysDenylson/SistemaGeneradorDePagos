@@ -46,4 +46,12 @@ class RepositorioJson
     	end
     empleados
   end
+  
+  def verificarExiste?
+    resp=false
+    if File.exist?("usuarios.json")
+      resp=true
+    end
+    resp
+  end
 end
