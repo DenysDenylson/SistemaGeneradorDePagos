@@ -8,7 +8,7 @@ class RepositorioJson
   def initialize
     @estado_json=false
   end
-  def cambiarestado?
+  def cambiarestado
     if@estado_json==false
       @estado_json=true
     else
@@ -19,5 +19,15 @@ class RepositorioJson
     File.open("usuarios.json", "a") do |file|
     		  	file.puts(Oj::dump empleado)
     	end	
+  end
+  
+  def adicionarTodosLosEmpleados
+    @empleados=RepositorioEmpleado.instance.recuperarEmpleados
+    @empleados.each do |empleado|
+      adiccionarEmpleado(empleado)
+    end
+  end
+  def estadotrue?
+    @estado
   end
 end
