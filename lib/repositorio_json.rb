@@ -8,11 +8,13 @@ class RepositorioJson
   def initialize
     @estado_json=false
   end
-  def cambiarestado
-    if@estado_json==false
-      @estado_json=true
+  def cambiarEstado
+    if recuperarEstado?
+      eliminarArchivo
+      @estado_json=false
     else
-      @estado=false
+      adicionarTodosLosEmpleados
+      @estado_json=true
     end
   end
   def adiccionarEmpleado(empleado)
@@ -27,7 +29,12 @@ class RepositorioJson
       adiccionarEmpleado(empleado)
     end
   end
-  def estadotrue?
-    @estado
+  
+  def eliminarArchivo
+    File.delete("usuarios.json")
+  end
+  
+  def recuperarEstado?
+    @estado_json
   end
 end
