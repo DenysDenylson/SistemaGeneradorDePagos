@@ -5,7 +5,6 @@ require 'oj'
 
 class RepositorioEmpleado 
   include Singleton
-  
   def initialize
     @empleados = Array.new
     
