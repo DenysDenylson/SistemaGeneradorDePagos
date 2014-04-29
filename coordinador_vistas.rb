@@ -3,11 +3,10 @@ require 'sinatra'
 
 get '/' do
   if RepositorioJson.instance.recuperarEstado?
-   @empleados=RepositorioEmpleados.instance.recuperarEmpleados
- else
-   @empleados=RepositorioJson.instance.adicionarTodosLosEmpleados
- end
- @empleados
+     @empleados=RepositorioEmpleado.instance.recuperarDeArchivos
+  else
+      @empleados=RepositorioEmpleado.instance.recuperarEmpleados
+  end
   erb :"empleados/lista_empleados"
 end
 
