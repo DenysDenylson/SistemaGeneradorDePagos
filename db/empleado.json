@@ -1,0 +1,1 @@
+{"^o":"Empleado","ci":"312","nombre":"","apellido":"","fecha_inicio_contrato":{"^O":"Date","year":2014,"month":1,"day":1,"start":2299161.0},"clasificador_contrato":{"^o":"ContratoMensual"},"tiene_sindicato":true,"clasificador_salario":{"^o":"ClasificadorSalarioFijo","salario":0.0,"fecha_inicio_contrato":{"^O":"Date","year":2014,"month":1,"day":1,"start":2299161.0}}}
