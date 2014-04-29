@@ -29,6 +29,11 @@ class ArchivoJson
     	end
    datos
   end
+  def guardarDatos(array)
+    array.each do |dato|
+      guardarDato(dato)
+    end 
+  end
   
   def verificarExiste?
     resp=false
@@ -36,6 +41,10 @@ class ArchivoJson
       resp=true
     end
     resp
+  end
+  def actualizar(array)
+    eliminarArchivo
+    guardarDatos(array)
   end
   
 end
