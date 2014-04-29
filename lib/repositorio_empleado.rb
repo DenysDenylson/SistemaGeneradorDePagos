@@ -46,10 +46,12 @@ class RepositorioEmpleado
                             end
                             e
                       }
+    @persistencia.actualizar(@empleados)                  
   end
   
   def eliminarPorCI(ci)
     @empleados.delete_if{|e| e.ci == ci}
+    @persistencia.actualizar(@empleados)
   end
   
   def instanciarNuevo
