@@ -59,7 +59,7 @@ class RepositorioEmpleado
   	empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
   	empleado
 	end
-	
+
 	def guardarTarjetaDeTiempoParaUnEmpleado(tarjeta_tiempo, ci)
 	  @empleados.collect!{|e| if e.ci == ci 
                               e.registrar_tarjeta_de_tiempo(tarjeta_tiempo)
