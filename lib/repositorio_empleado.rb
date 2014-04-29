@@ -6,16 +6,17 @@ class RepositorioEmpleado
   
   def initialize
     @empleados = Array.new
-    @persistencia=ArchivoJson.new("empleados.json")
+    
+    @empleados.push(Empleado.crearEmpleado("111","Juan", "Perez","2014-1-1","false","quincenal","por_hora","50"))
+    @empleados.push(Empleado.crearEmpleado("222","Ana", "Lara","2014-4-10","false","mensual","fijo","5000"))
+    @empleados.push(Empleado.crearEmpleado("333","Matias", "Soto","2014-2-11","false","trimestral","por_hora","100"))
   end
   
   def guardar(empleado)
     @empleados.push(empleado)
-    @persistencia.guardarDato(empleado)
   end
   
   def recuperarEmpleados
-    @empleados=@persistencia.recuperarDatos
     @empleados
   end
   
@@ -44,12 +45,10 @@ class RepositorioEmpleado
                             end
                             e
                       }
-    @persistencia.actualizar(@empleados)                  
   end
   
   def eliminarPorCI(ci)
     @empleados.delete_if{|e| e.ci == ci}
-    @persistencia.actualizar(@empleados)
   end
   
   def instanciarNuevo

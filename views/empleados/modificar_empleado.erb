@@ -1,23 +1,25 @@
 <h1>Modificar empleado</h1>
 
-<form class="form-horizontal" action="/modificar_empleados" method="post" name="modificado" onsubmit="return formulario()">
+<form class="form-horizontal" action="/modificar_empleados" method="post">
 	<input type="hidden" name="_method" value="put" />
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="ci">CI:</label>
 		<div class="col-md-4">
-			<input name="ci" id="ci" type="number" value="<%= @empleado.ci %>" class="form-control input-md"/>
+			<input name="ci" type="number" value="<%= @empleado.ci %>" class="form-control input-md" readonly/>
 		</div>
 	</div>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="nombre">Nombre:</label>
 		<div class="col-md-4">
-			<input name="nombre" type="text" value="<%= @empleado.nombre %>" class="form-control input-md"/>
+			<input name="nombre" type="text" value="<%= @empleado.nombre %>" 
+			class="form-control input-md" required=""/>
 		</div>
 	</div>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="apellido">Apellido:</label>
 		<div class="col-md-4">
-			<input name="apellido" type="text" value="<%= @empleado.apellido %>" class="form-control input-md"/>
+			<input name="apellido" type="text" value="<%= @empleado.apellido %>"
+			 class="form-control input-md" required=""/>
 		</div>
 	</div>
 	<div class = "form-group">
@@ -45,6 +47,7 @@
 			<input name="salario" type="number" value = "<%= @empleado.devolver_salario%>" class="form-control input-md"/> 
 		</div>
 	</div>
+	<% if @ya_fue_creado %>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="tiene_sindicato">Pertenece al Sindicato:</label>
 		<div class="col-md-4">
@@ -54,6 +57,7 @@
 			</select>
 		</div>
 	</div>
+	<% end %>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
 		<div class="col-md-4">
@@ -70,16 +74,5 @@
 	function cambiar(){
 		var salario=document.getElementById("salario").value;
 		document.getElementById("salario_monto").innerHTML="Salario "+salario;
-	}
-	
-	function formulario() { 
-		var inputVal = modificado.ci.value
-    	if (inputVal == "") 
-      	{
-        	$("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
-        	$("#ci").attr({"placeholder":"obligatorio"});
-        	modificado.ci.focus();  
-     		return false; 
-   		}
 	}
 </script>
