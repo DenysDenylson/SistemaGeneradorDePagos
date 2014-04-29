@@ -4,9 +4,7 @@ class ArchivoJson
   attr_accessor :archivo
   def initialize(archivo)
      @archivo=archivo
-    if verificarExiste?
-      eliminarArchivo
-    end
+     File.open(@archivo,"a")
   end
   
   def guardarDato(datos)

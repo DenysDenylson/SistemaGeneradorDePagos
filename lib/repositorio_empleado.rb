@@ -15,9 +15,7 @@ class RepositorioEmpleado
   end
   
   def recuperarEmpleados
-   /. if @persistencia.verificarExiste?#no estoy seguro lo que quiero hacer es recuperar los usuarios guardados en el archivo de la anterior sesion si este esta creado  pero creo que no va aca
     @empleados=@persistencia.recuperarDatos
-    end/
     @empleados
   end
   
