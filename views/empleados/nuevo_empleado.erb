@@ -9,15 +9,13 @@
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="nombre">Nombre:</label>
 		<div class="col-md-4">
-			<input name="nombre" type="text" value="<%= @empleado.nombre %>" 
-			class="form-control input-md" required=""/>
+			<input name="nombre" id="nombre" type="text" value="<%= @empleado.nombre %>" class="form-control input-md"/>
 		</div>
 	</div>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="apellido">Apellido:</label>
 		<div class="col-md-4">
-			<input name="apellido" type="text" value="<%= @empleado.apellido %>" 
-			class="form-control input-md" required=""/>
+			<input name="apellido" type="text" value="<%= @empleado.apellido %>" class="form-control input-md"/>
 		</div>
 	</div>
 	<div class = "form-group">
@@ -45,7 +43,6 @@
 			<input name="salario" type="number" placeholder = "0" class="form-control input-md"/> 
 		</div>
 	</div>
-	<% if @ya_fue_creado %>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="tiene_sindicato">Pertenece al Sindicato:</label>
 		<div class="col-md-4">
@@ -55,7 +52,6 @@
 			</select>
 		</div>
 	</div>
-	<% end %>
 	<div class = "form-group">
 		<label class="col-md-4 control-label" for="empleado_fecha_inicio_contrato">Fecha Inicio de Contrato:</label>
 		<div class="col-md-4">
@@ -83,4 +79,27 @@
         	return false; 
    		} 
 	}
+	function validarCi(){
+		var inputVal = nuevo.ci.value
+    	if (inputVal == "") 
+      	{
+        	$("#ci").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
+        	$("#ci").attr({"placeholder":"obligatorio"});
+        	nuevo.ci.focus(); 
+        	return false; 
+   		}
+   			
+   	}
+   	function validarNombre()
+   	{
+   		var inputVal = nuevo.nombre.value
+    	if (inputVal == "") 
+      	{
+        	$("#nombre").css({"-webkit-box-shadow":"0px 0px 6px 2px #f00"});
+        	$("#nombre").attr({"placeholder":"obligatorio"});
+        	nuevo.nombre.focus(); 
+        	return false;
+   		}
+   
+   	}
 </script>

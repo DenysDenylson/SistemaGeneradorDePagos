@@ -2,17 +2,15 @@ require './gemas'
 require 'sinatra'
 
 get '/' do
-  if RepositorioJson.instance.recuperarEstado?
-     @empleados=RepositorioEmpleado.instance.recuperarDeArchivos
-  else
-      @empleados=RepositorioEmpleado.instance.recuperarEmpleados
-  end
+  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+   @empleados.each do |empleado| 
+     RepositorioJson.instance.adiccionarEmpleado(empleado)
+   end
   erb :"empleados/lista_empleados"
 end
 
 get '/nuevo_empleado' do
   @empleado = RepositorioEmpleado.instance.instanciarNuevo
-  @ya_fue_creado = RepositorioSindicato.instance.ya_fue_creado?
   erb :"empleados/nuevo_empleado"
 end
 
@@ -26,14 +24,12 @@ post '/empleados' do
 end
 
 get "/ver_empleado/:ci" do
-  @empleado = RepositorioEmpleado.instance.recuperarPorCI(params[:ci])  
-  @ya_fue_creado = RepositorioSindicato.instance.ya_fue_creado?
+  @empleado = RepositorioEmpleado.instance.recuperarPorCI(params[:ci])
   erb :"empleados/ver_empleado"
 end
 
 get "/modificar_empleado/:ci" do
   @empleado = RepositorioEmpleado.instance.recuperarPorCI(params[:ci])
-  @ya_fue_creado = RepositorioSindicato.instance.ya_fue_creado?
   erb :"empleados/modificar_empleado"
 end
 
@@ -72,13 +68,13 @@ get "/cheques" do
 end
 
 get "/sindicato" do
-  if RepositorioSindicato.instance.ya_fue_creado?
+  if RepositorioSindicato.instance.existe?
+    @date = Date.today
+    erb :"sindicato/nuevo_sindicato"
+  else
     @hay_empleados_con_sindicato = RepositorioEmpleado.instance.hayEmpleadosConSindicato?
     @sindicato = RepositorioSindicato.instance.retornar_sindicato
     erb :"sindicato/ver_sindicato"
-  else
-    @date = Date.today
-    erb :"sindicato/nuevo_sindicato"
   end
 end
 
@@ -95,10 +91,8 @@ get "/modificar_sindicato" do
 end
 
 put "/guardar_sindicato"do 
-  @hay_empleados_con_sindicato = RepositorioEmpleado.instance.hayEmpleadosConSindicato?
-  sindicato = Sindicato.crear_sindicato(params[:nombre],params[:fecha],params[:descuento])
-  RepositorioSindicato.instance.modificar(sindicato)
-  @sindicato = RepositorioSindicato.instance.retornar_sindicato
+  @sindicato=Sindicato.crear_sindicato(params[:nombre],params[:fecha],params[:descuento])
+  RepositorioSindicato.instance.modificar_sindicato_repositorio(@sindicato)
   erb :"sindicato/ver_sindicato"  
 end
 
@@ -112,7 +106,7 @@ post "/nueva_tarjeta_servicio" do
   @hay_empleados_con_sindicato = RepositorioEmpleado.instance.hayEmpleadosConSindicato?
   tarjeta_servicio = TarjetaDeServicio.crear_tarjeta_servicio(params[:fecha], params[:ci_empleado], 
                                                               params[:monto], params[:descripcion])
-  RepositorioSindicato.instance.agregar_tarjeta_servicio(tarjeta_servicio)  
+  RepositorioSindicato.instance.agregar(tarjeta_servicio)  
   @sindicato = RepositorioSindicato.instance.retornar_sindicato
   erb :"sindicato/ver_sindicato"
 end
@@ -121,7 +115,7 @@ get "/modificar_tarjeta_servicio/:object_id" do
   @date = Date.today
   @empleados = RepositorioEmpleado.instance.recuperarEmpleadosConSindicato
   @object_id = params[:object_id]
-  @tarjeta_servicio = RepositorioSindicato.instance.recuperar_tarjeta_servicio_por(@object_id)
+  @tarjeta_servicio = RepositorioSindicato.instance.recuperar_por(@object_id)
   erb :"sindicato/tarjetas_servicio/modificar_tarjeta_servicio"
 end
 
@@ -129,33 +123,16 @@ put "/modificar_tarjetas_servicios" do
   @hay_empleados_con_sindicato = RepositorioEmpleado.instance.hayEmpleadosConSindicato?
   tarjeta_servicio = TarjetaDeServicio.crear_tarjeta_servicio(params[:fecha], params[:ci_empleado], 
                                                               params[:monto], params[:descripcion])
-  RepositorioSindicato.instance.modificar_tarjeta_servicio(tarjeta_servicio, params[:object_id])  
+  RepositorioSindicato.instance.modificar(tarjeta_servicio, params[:object_id])  
   @sindicato = RepositorioSindicato.instance.retornar_sindicato
   erb :"sindicato/ver_sindicato"
 end
 
 get "/eliminar_tarjeta_servicio/:object_id" do
   @hay_empleados_con_sindicato = RepositorioEmpleado.instance.hayEmpleadosConSindicato?
-  RepositorioSindicato.instance.eliminar_tarjeta_servicio_por(params[:object_id])  
+  RepositorioSindicato.instance.eliminar_por(params[:object_id])  
   @sindicato = RepositorioSindicato.instance.retornar_sindicato
   erb :"sindicato/ver_sindicato"
-end
-
-get "/archivosJson" do
-  RepositorioJson.instance.adicionarTodosLosEmpleados
-  RepositorioJson.instance.cambiarEstado
-  @empleados=RepositorioJson.instance.recuperarEmpleadoJson
-  erb :"empleados/lista_empleados"
-end
-get "/memoria" do
-  if RepositorioJson.instance.verificarExiste?
-    RepositorioJson.instance.cambiarEstado
-    @empleados=RepositorioEmpleado.instance.recuperarDeArchivo
-     RepositorioJson.instance.eliminarArchivo
-  else
-  @empleados=RepositorioEmpleado.instance.recuperarEmpleados
-  end
-  erb :"empleados/lista_empleados"
 end
 
 
