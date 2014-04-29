@@ -4,10 +4,9 @@ require 'singleton'
 require 'date'
 class RepositorioJson
   include Singleton
-    attr_accessor  :estado_json, :tipo_data
+    attr_accessor  :estado_json
   def initialize
     @estado_json=false
-    @tipo_data="RepositorioJson"
   end
   def cambiarEstado
     if recuperarEstado?
