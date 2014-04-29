@@ -12,5 +12,5 @@ require('./lib/contrato_trimestral')
 require('./lib/repositorio_empleado')
 require('./lib/repositorio_cheques')
 require('./lib/repositorio_sindicato')
-require('./lib/repositorio_json')
+require('./lib/archivo_json')
 require 'date'

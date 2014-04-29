@@ -31,7 +31,7 @@ class Sindicato
   end
   
   ###metodos sin test
-  def recuperar_tarjeta_servicio_por (object_id)
+  def recuperar_por (object_id)
     tarjetas = @tarjetas_servicio.select{|ts| ts.object_id == object_id.to_i }
     tarjetas.first
   end
@@ -46,6 +46,12 @@ class Sindicato
   
   def eliminar (id_tarjeta)
     @tarjetas_servicio.delete_if{|ts| ts.object_id == id_tarjeta.to_i}
+  end
+  
+  def modificar_datos_con_otro (sindicato)
+    @nombre = sindicato.nombre
+    @fecha = sindicato.fecha
+    @descuento_fijo = sindicato.descuento_fijo
   end
   
   def self.crear_sindicato(nombre, fecha, descuento_fijo)
