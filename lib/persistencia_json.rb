@@ -1,14 +1,12 @@
 require 'json'
 require 'oj'
 class PersistenciaJSON
-  attr_accessor :archivo
   def initialize(archivo)
      @archivo = File.open(archivo,"a")
   end
   
   def cargar_datos(datos)
     eliminarArchivo
-    File.open(@archivo, "a")
     guardarDatos(datos)
   end
   
