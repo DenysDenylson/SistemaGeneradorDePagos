@@ -7,7 +7,7 @@ class RepositorioEmpleado
   def initialize
     @empleados = Array.new
     @persistencia=PersistenciaJSON.new("./db/empleado.json")
-    
+    # @persistencia=PersistenciaMemoria.new
   end
   
   def guardar(empleado)
@@ -57,6 +57,7 @@ class RepositorioEmpleado
   def instanciarNuevo
   	empleado = Empleado.new('', '', '', Date.new(2014,1,1), ContratoMensual.new)
   	empleado.clasificador_salario = ClasificadorSalarioFijo.new(0,Date.today)
+  	empleado.tiene_sindicato = false
   	empleado
 	end
 
