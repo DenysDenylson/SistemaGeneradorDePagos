@@ -1,0 +1,1 @@
+{"^o":"Sindicato","nombre":"ojala de","fecha":{"^O":"Date","year":2014,"month":5,"day":2,"start":2299161.0},"descuento_fijo":25.0,"tarjetas_servicio":[{"^o":"TarjetaDeServicio","fecha":{"^O":"Date","year":2014,"month":5,"day":2,"start":2299161.0},"ci_empleado":"5555","monto":4234.0,"descripcion":""}]}
