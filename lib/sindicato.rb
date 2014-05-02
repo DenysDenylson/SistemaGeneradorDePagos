@@ -9,8 +9,6 @@ class Sindicato
     @fecha = fecha
     @descuento_fijo = descuento_fijo
     @tarjetas_servicio = []
-    @persistencia=PersistenciaJSON.new("./db/tarjeta_servicio.json")
-    @tarjetas_servicio = @persistencia.recuperar_datos
   end
   
   def modificar_datos (nombre, fecha, descuento_fijo)
@@ -21,11 +19,9 @@ class Sindicato
   
   def agregar (tarjeta_servicio)
     @tarjetas_servicio.push(tarjeta_servicio)
-    @persistencia.cargar_datos(@tarjetas_servicio)
   end
   
   def calcular_servicio_para_empleado (ci_empleado)
-    @tarjetas_servicio = @persistencia.recuperar_datos
     monto_tarjetas = 0
     @tarjetas_servicio.each do |tarjeta| if tarjeta.ci_empleado == ci_empleado
                                             monto_tarjetas += tarjeta.monto 
@@ -36,25 +32,20 @@ class Sindicato
   
   ###metodos sin test
   def recuperar_tarjeta_servicio_por (object_id)
-    @tarjetas_servicio = @persistencia.recuperar_datos
     tarjetas = @tarjetas_servicio.select{|ts| ts.object_id == object_id.to_i }
     tarjetas.first
   end
   
   def modificar (tarjeta_servicio, id_tarjeta)
-    @tarjetas_servicio = @persistencia.recuperar_datos
     @tarjetas_servicio.collect!{ |ts| if ts.object_id == id_tarjeta.to_i
                                         ts.modificar_datos_con_otra(tarjeta_servicio)
                                       end
                                         ts
                                 }
-    @persistencia.cargar_datos(@tarjetas_servicio) 
   end
   
   def eliminar (id_tarjeta)
-    @tarjetas_servicio = @persistencia.recuperar_datos
     @tarjetas_servicio.delete_if{|ts| ts.object_id == id_tarjeta.to_i}
-    @persistencia.cargar_datos(@tarjetas_servicio) 
   end
   
   def self.crear_sindicato(nombre, fecha, descuento_fijo)
@@ -66,7 +57,6 @@ class Sindicato
     Sindicato.new(nombre,fecha,descuento_fijo)
   end
   ###
-  
 end
 
 

@@ -10,6 +10,11 @@ class PersistenciaJSON
     guardarDatos(datos)
   end
   
+  def guardar_dato(dato)
+    eliminarArchivo
+    guardar(dato)
+  end
+  
   def recuperar_datos
     datos=[]
     File.open(@archivo, "r+") do |file| 
@@ -21,12 +26,22 @@ class PersistenciaJSON
    datos
   end
   
+  def recuperar_dato
+    dato=1
+    File.open(@archivo, "r+")do |file| 
+    		while linea= file.gets
+    			dato=Oj.load(linea)
+    		end
+    	end
+   dato
+  end
+  
   private
   def guardar(dato)
     File.open(@archivo, "a") do |file|
     		  	file.puts(Oj::dump dato)
     	end	
-  end 
+  end
   
   def guardarDatos(array)
     array.each do |dato|

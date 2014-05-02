@@ -5,15 +5,19 @@ class RepositorioSindicato
   include Singleton
   
   def initialize
-    @sindicato = nil
+    @sindicato =nil
+    @persistencia=PersistenciaJSON.new("./db/sindicato.json")
+    @sindicato=@persistencia.recuperar_dato
   end
   
   def crear (sindicato)
     @sindicato = sindicato
+    @persistencia.guardar_dato(@sindicato)
   end
   
   def modificar (sindicato)
-    @sindicato.modificar_datos(sindicato.nombre, sindicato.fecha, sindicato.descuento)
+    @sindicato.modificar_datos(sindicato.nombre, sindicato.fecha, sindicato.descuento_fijo)
+    @persistencia.guardar_dato(@sindicato)
   end
   
   def retornar_sindicato
@@ -30,14 +34,17 @@ class RepositorioSindicato
   
   def agregar_tarjeta_servicio (tarjeta_servicio)
     @sindicato.agregar(tarjeta_servicio)
+    @persistencia.guardar_dato(@sindicato)
   end
   
   def modificar_tarjeta_servicio (tarjeta_servicio,id_tarjeta)
     @sindicato.modificar(tarjeta_servicio,id_tarjeta)
+    @persistencia.guardar_dato(@sindicato)
   end
   
   def eliminar_tarjeta_servicio_por (id_tarjeta)
     @sindicato.eliminar(id_tarjeta)
+    @persistencia.guardar_dato(@sindicato)
   end
   
 end
