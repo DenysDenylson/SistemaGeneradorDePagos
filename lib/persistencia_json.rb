@@ -22,8 +22,8 @@ class PersistenciaJSON
     			dato=Oj.load(linea)
     			datos.push(dato)
     		end
-    	end
-   datos
+    end
+    datos
   end
   
   def recuperar_dato
