@@ -1,58 +1,58 @@
-require 'json'
 require 'oj'
+
 class PersistenciaJSON
+  
   def initialize(archivo)
      @archivo = File.open(archivo,"a")
   end
-  
-  def cargar_datos(datos)
-    eliminarArchivo
-    guardarDatos(datos)
+
+  def guardar_todos(datos)
+    limpiar_archivo
+    guardar_arreglo(datos)
   end
   
-  def guardar_dato(dato)
-    eliminarArchivo
-    guardar(dato)
+  def guardar(dato)
+    limpiar_archivo
+    guardar_dato(dato)
   end
   
-  def recuperar_datos
+  def recuperar_todos
     datos=[]
     File.open(@archivo, "r+") do |file| 
-    		while linea= file.gets
-    			dato=Oj.load(linea)
-    			datos.push(dato)
-    		end
+      while linea= file.gets
+    	  dato=Oj.load(linea)
+    		datos.push(dato)
     	end
-   datos
+    end
+    datos
   end
   
-  def recuperar_dato
-    dato=1
+  def recuperar
+    dato = nil
     File.open(@archivo, "r+")do |file| 
-    		while linea= file.gets
-    			dato=Oj.load(linea)
-    		end
-    	end
-   dato
+      while linea= file.gets
+        dato=Oj.load(linea)
+      end
+    end
+    dato
   end
   
   private
-  def guardar(dato)
+  def guardar_dato(dato)
     File.open(@archivo, "a") do |file|
-    		  	file.puts(Oj::dump dato)
-    	end	
+      file.puts(Oj::dump dato)
+    end	
   end
   
-  def guardarDatos(array)
-    array.each do |dato|
-      guardar(dato)
+  def guardar_arreglo(datos)
+    datos.each do |dato|
+      guardar_dato(dato)
     end 
   end
-    
-  def eliminarArchivo
+      
+  def limpiar_archivo
     File.truncate(@archivo,0)
   end
-  
   
 end
 
