@@ -7,20 +7,19 @@ class RepositorioEmpleado
   def initialize
     @empleados = Array.new
     @persistencia=PersistenciaJSON.new("./db/empleado.json")
-    # @persistencia=PersistenciaMemoria.new
   end
   
   def guardar(empleado)
     @empleados.push(empleado)
-    @persistencia.cargar_datos(@empleados)
+    @persistencia.guardar_todos(@empleados)
   end
   
   def recuperarEmpleados
-    @empleados = @persistencia.recuperar_datos
+    @empleados = @persistencia.recuperar_todos
   end
   
   def recuperarEmpleadosConSindicato
-    @empleados = @persistencia.recuperar_datos
+    @empleados = @persistencia.recuperar_todos
     empleados = []
     @empleados.each do |empleado| empleados.push(empleado) if empleado.tiene_sindicato? end
     empleados
@@ -35,7 +34,7 @@ class RepositorioEmpleado
   end
 
   def recuperarPorCI(ci) 
-    @empleados = @persistencia.recuperar_datos
+    @empleados = @persistencia.recuperar_todos
     empleado = @empleados.select{|e| e.ci == ci }
     empleado.first
   end
@@ -46,12 +45,12 @@ class RepositorioEmpleado
                             end
                             e
                       }
-    @persistencia.cargar_datos(@empleados) 
+    @persistencia.guardar_todos(@empleados) 
   end
   
   def eliminarPorCI(ci)
     @empleados.delete_if{|e| e.ci == ci}
-    @persistencia.cargar_datos(@empleados) 
+    @persistencia.guardar_todos(@empleados) 
   end
   
   def instanciarNuevo
@@ -67,7 +66,7 @@ class RepositorioEmpleado
                             end
                             e
                        }
-    @persistencia.cargar_datos(@empleados) 
+    @persistencia.guardar_todos(@empleados) 
     
   end
   
