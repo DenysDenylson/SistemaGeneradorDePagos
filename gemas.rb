@@ -14,4 +14,5 @@ require('./lib/repositorio_cheques')
 require('./lib/repositorio_sindicato')
 require('./lib/persistencia_json')
 require('./lib/persistencia_memoria')
+require('./lib/repositorio_persistencia')
 require 'date'
