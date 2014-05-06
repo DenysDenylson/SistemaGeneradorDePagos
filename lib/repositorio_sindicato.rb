@@ -5,7 +5,7 @@ class RepositorioSindicato
   include Singleton
   
   def initialize
-    @persistencia = PersistenciaJSON.new("./db/sindicato.json")
+    @persistencia = RepositorioPersistencia.new("./db/sindicato.json")
   end
   
   def crear (sindicato)
@@ -45,6 +45,9 @@ class RepositorioSindicato
   def eliminar_tarjeta_servicio_por (id_tarjeta)
     @sindicato.eliminar(id_tarjeta)
     @persistencia.guardar(@sindicato)
+  end
+   def cambiarPersistencia(tipo)
+    @persistencia.seleccionar(tipo)
   end
   
 end

@@ -140,6 +140,18 @@ get "/eliminar_tarjeta_servicio/:object_id" do
   @sindicato = RepositorioSindicato.instance.retornar_sindicato
   erb :"sindicato/ver_sindicato"
 end
+get "/memoria" do
+  RepositorioEmpleado.instance.cambiarPersistencia("memoria")
+  RepositorioSindicato.instance.cambiarPersistencia("memoria")
+  erb :"index"
+end
+get "/json" do
+  RepositorioEmpleado.instance.cambiarPersistencia("json")
+  RepositorioSindicato.instance.cambiarPersistencia("json")
+  erb :"index"
+end
+
+
 
 
 

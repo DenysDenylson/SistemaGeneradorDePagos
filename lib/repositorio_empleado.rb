@@ -6,7 +6,7 @@ class RepositorioEmpleado
   
   def initialize
     @empleados = Array.new
-    @persistencia=PersistenciaJSON.new("./db/empleado.json")
+    @persistencia=RepositorioPersistencia.new("./db/empleado.json")
   end
   
   def guardar(empleado)
@@ -68,6 +68,9 @@ class RepositorioEmpleado
                        }
     @persistencia.guardar_todos(@empleados) 
     
+  end
+  def cambiarPersistencia(tipo)
+    @persistencia.seleccionar(tipo)
   end
   
 end
