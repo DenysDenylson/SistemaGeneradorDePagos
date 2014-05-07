@@ -2,12 +2,12 @@ require './gemas'
 require 'sinatra'
 
 get '/' do
-  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
   erb :"index"
 end
+
 get '/lista_empleados'do
-@empleados = RepositorioEmpleado.instance.recuperarEmpleados
-erb :"empleados/lista_empleados"
+  @empleados = RepositorioEmpleado.instance.recuperarEmpleados
+  erb :"empleados/lista_empleados"
 end
 
 get '/nuevo_empleado' do
