@@ -20,5 +20,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  singleton
   sinatra
   thin
