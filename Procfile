@@ -1,1 +1,1 @@
-web: bundle exec ruby coordinador_vistas.rb -p $PORT
+web: bundle exec thin -p $PORT
