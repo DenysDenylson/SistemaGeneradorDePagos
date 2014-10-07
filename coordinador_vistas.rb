@@ -1,4 +1,5 @@
 require './gemas'
+require 'thin'
 require 'sinatra'
 
 get '/' do
